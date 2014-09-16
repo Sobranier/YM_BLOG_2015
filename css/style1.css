@@ -1,0 +1,188 @@
+.clearfix:after{display:block;clear:both;content:'.';height:0;visibility:hidden;font-size:0;}
+.clearfix {_zoom:1;}
+
+.fl{float:left;}
+.fr{float:right;}
+a{text-decoration:none;}
+
+.ptb30{padding:30px 0;}
+.mail{display:inline-block;width:172px;height:30px;background: url(../img/logos.png) -376px -129px;}
+/*
+html {
+	background:url(../img/page1.png) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}*/
+body{position:relative;max-width: 1600px;min-width:1240px;font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana,"微软雅黑", sans-serif;}
+
+.topbar{height: 40px;width: 100%;padding: 30px 0;position: fixed;top: 0;left: 0;z-index: 9999;background-color: rgba(255, 255, 255, 0);
+	-webkit-transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);font-family: "MarkScWebPro", "Helvetica Neue", Helvetica, Arial, sans-serif;}
+.masthead{margin-left:30px;}
+.linklist li{float:left;height:38px;line-height:40px;margin-right:40px;}
+.topbar .linklist{margin-top:1px;}
+
+
+.topbar .linklist li a:hover ,.topbar .linklist li.selected a{
+	padding-bottom: 5px;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+.linklist li a {
+	-moz-transition: 0.15s all cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	-webkit-transition: 0.15s all cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	-ms-transition: 0.15s all cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	transition: 0.15s all cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	padding-bottom: 14px;
+	border-bottom: 2px solid rgba(255, 255, 255, 0);
+}
+.topbar .masthead{width:125px;height:80px;background:url(../img/logo1.png);}
+.topbar .linklist a{color:white;}
+
+
+.topbar-fade{padding: 5px 0;
+background-color: rgba(255, 255, 255, 0.8) !important;
+-moz-box-shadow: 0px 0px 3px 0px rgba(41, 43, 51, 0.25);
+-webkit-box-shadow: 0px 0px 3px 0px rgba(41, 43, 51, 0.25);
+-ms-box-shadow: 0px 0px 3px 0px rgba(41, 43, 51, 0.25);
+box-shadow: 0px 0px 3px 0px rgba(41, 43, 51, 0.25);
+}
+.topbar-fade .linklist li a:hover ,.topbar-fade .linklist li.selected a{
+	padding-bottom: 5px;
+	border-bottom: 2px solid rgba(144, 144, 144, 0.9);
+}
+
+.topbar-fade .masthead{height:40px;background:url(../img/logo3.png);}
+.topbar-fade .linklist a{color:#292B33;}
+
+
+
+
+
+.slide--photo{height:450px;background-attachment:fixed;position:relative;
+
+}
+.slide--photo--hero{background-image: url(../img/page2.JPG);background-size: cover;}
+.index-about .slide--photo--hero{background-image: url(../img/page1.png);background-size: cover;}
+.pro .slide--photo--hero{background:url(../img/bg6.jpg) no-repeat scroll center center;
+	background-size: cover;}
+
+
+
+
+.hero--copy{position:absolute;top:188px;left:50%;}
+.hero--copy h1{font-size:2.6em;color:white;font-weight:bold;line-height: 1.2em;padding-bottom:20px;}
+.hero--copy h2{font-size:1.3em;color:white;font-weight:bold;line-height: 1.5em;}
+.hero--wrapper{position:absolute;bottom:0;background-color: red;width: 100%;height:220px;text-align: center;
+	text-shadow: none;
+	padding: 50px 0 0 0;
+	background-color: rgba(41, 43, 51, 0.4);
+	border-bottom: 10px solid rgba(41, 43, 51, 0.4);
+	text-align: center;
+-webkit-animation: from-bottom 0.75s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;
+-moz-animation: from-bottom 0.75s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;
+-o-animation: from-bottom 0.75s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;
+animation: from-bottom 0.75s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;
+}
+.hero--wrapper p{width:90%;margin-left:5%;font-weight: bold;font-size:20px;color:#dddddd;line-height:30px;}
+.index .hero--wrapper p{line-height: 140px;}
+.scroll--bar{position:absolute;bottom:0;width:100%;}
+.scroll--bar a{display: block;width:180px;color:#ffffff;font-family: "MarkScWebPro", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:1em;
+	background-color: rgba(41, 43, 51, 0.4);
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	padding: 15px 10px 4px 10px;
+	position:absolute;left:50%;margin-left:-100px;bottom:0;
+}
+
+.slide--photo--m1{background-image: url(../img/1.png) ;background-size: cover;}
+.slide--photo--m2{background-image: url(../img/2.png);background-size: cover;}
+.slide--photo--m3{background-image: url(../img/3.JPG);background-size: cover;}
+.slide--photo--m4{background-image: url(../img/bg1.jpg);background-size: cover;}
+.slide--text{height:900px;background-color: #f6f6f6;}
+
+
+/*pro 界面的一些调整*/
+.slide--content{position:relative;}
+.slide--photo-pro{position:absolute;left:50%;margin-left:-450px;}
+.slide--photo-pro1{width:900px;height:200px;}
+
+.slide--text--pro{height:4600px;background-image: url(../img/bg1.jpg) ;background-size: cover;}
+
+.slide--text p{width:60%;margin-left:20%;line-height: 40px;font-size: 20px;font-family: "MarkWebPro", "Helvetica Neue", Helvetica, Arial, sans-serif;}
+.lgo{display:inline-block;height:64px;width:64px;margin-left:50px;}
+.logos{display:inline-block;height:64px;width:64px;}
+.lgo1{width:122px;height:44px;margin-left:20%;background-color: #c3c3c3;}
+.lgo1 a{width:122px;height:44px;background: url(../img/logos.png) -2px -99px; }
+.lgo2{width:58px;height:58px;}
+.lgo2 a{width:58px;height:58px;background: url(../img/logos.png) -216px -4px;}
+.lgo3{width:64px;height:64px;}
+.lgo3 a{width:64px;height:64px;background: url(../img/logos.png) -0px -0px;}
+.lgo4{width:62px;height:62px;}
+.lgo4 a{width:62px;height:62px;background: url(../img/logos.png) -346px -16px;border-radius:12px;}
+.lgo5{width:58px;height:58px;}
+.lgo5 a{width:58px;height:58px;background: url(../img/logos.png) -217px -83px;}
+
+
+.slide-context{position:absolute;width:900px;left:50%;margin-left:-450px;font-size: 20px;color:white;font-weight:bold;font-family: "MarkWebPro", "Helvetica Neue", Helvetica, Arial, sans-serif;}
+.slide-context-1{top:50px;}
+
+.slide--photo--prom1{top:150px;background-image: url(../img/bg3.jpg) ;background-size: cover;}
+.slide-context-2{top:400px;}
+
+
+.slide--photo--prom11{top:500px;height:300px;background-image: url(../img/bg11.jpg);background-size: cover;}
+.slide--photo--prom12{top:850px;background-image: url(../img/bg12.jpg);background-size: cover;}
+.slide--photo--prom13{top:1100px;background-image: url(../img/bg13.jpg);background-size: cover;}
+.slide--photo--prom14{top:1350px;height:300px;background-image: url(../img/bg14.JPG);background-size: cover;}
+
+.partTwo{position:absolute;top:1700px;width:1200px;left:50%;margin-left:-600px;height:300px;}
+
+.show-photo{float:left;width:580px;height:320px;border:10px solid transparent;}
+
+.show-photo3{width:380px;height:210px;}
+.show-photo4{width:380px;height:210px;}
+.show-photo5{width:380px;height:210px;}
+.show-photo10{width:380px;height:210px;}
+.show-photo11{width:380px;height:210px;}
+.show-photo12{width:380px;height:210px;}
+.show-photo17{width:825px;height:500px;}
+.show-photo18{width:333px;height:500px;}
+
+.show-photo1{background-image: url(../img/photo/photo1.JPG);background-size: cover;}
+.show-photo2{background-image: url(../img/photo/photo2.png);background-size: cover;}
+.show-photo3{background-image: url(../img/photo/photo3.JPG);background-size: cover;}
+.show-photo4{background-image: url(../img/photo/photo4.png);background-size: cover;}
+.show-photo5{background-image: url(../img/photo/photo5.png);background-size: cover;}
+.show-photo6{background-image: url(../img/photo/photo6.png);background-size: cover;}
+.show-photo7{background-image: url(../img/photo/photo7.png);background-size: cover;}
+.show-photo8{background-image: url(../img/photo/photo8.png);background-size: cover;}
+.show-photo9{background-image: url(../img/photo/photo9.png);background-size: cover;}
+.show-photo10{background-image: url(../img/photo/photo10.png);background-size: cover;}
+.show-photo11{background-image: url(../img/photo/photo11.JPG);background-size: cover;}
+.show-photo12{background-image: url(../img/photo/photo12.png);background-size: cover;}
+.show-photo13{background-image: url(../img/photo/photo13.png);background-size: cover;}
+.show-photo14{background-image: url(../img/photo/photo14.png);background-size: cover;}
+.show-photo15{background-image: url(../img/photo/photo15.png);background-size: cover;}
+.show-photo16{background-image: url(../img/photo/photo16.png);background-size: cover;}
+.show-photo17{background-image: url(../img/photo/photo17.png);background-size: cover;}
+.show-photo18{background-image: url(../img/photo/photo18.png);background-size: cover;}
+
+
+
+/*这个是简历文件*/
+.slide--resume{height:1760px;overflow: auto;position:relative;}
+.slide--resume canvas{position:absolute;left:50%;margin-left:-620px;}
+
+#export-btn{position:absolute;border:0;right:30px;top:100px;height:40px;line-height:40px;width:100px;font-size:22px;background-color: #000000;color:red;font-weight: bold;}
+.resume--introduce{position:absolute;right:0;top:150px;width:300px;padding:20px;font-size: 20px;line-height:22px;font-weight:bold;background-color: black;color:white;}
+
+.outer{width:1240px;height:1754px;display:none;background-color: #c3c3c3;position:fixed;top:0;left:50%;margin-left:-620px;border:5px solid #00516e;}
+.outer #close-btn{position:absolute;border:0;right:30px;top:100px;height:40px;line-height:40px;width:100px;font-size:22px;background-color: #000000;color:red;font-weight: bold;}
+
+
+
+
+.footer{background-color: #000000;height:200px;position:relative;}
+.footer h2{text-align: center;font-weight: bold;line-height:2.5em;font-size: 2.5em;color:#ffffff;font-family: "MarkScWebPro", "Helvetica Neue", Helvetica, Arial, sans-serif;}
+.footer p{color:#c3c3c3;font-size: 12px;position:absolute;bottom:3px;right:10px;}

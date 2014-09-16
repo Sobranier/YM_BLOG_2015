@@ -1,0 +1,14 @@
+<MKM version="2.0" imageFileUrl="file:///Users/yanweiqing/Dropbox/%E5%BA%94%E7%94%A8/Try/yxz/img/%E5%BD%B1%E5%83%8F%E5%BF%97-%E9%A6%96%E9%A1%B5.jpg">
+  <Marks>
+    <ColorMark defaultDirection="9" colorSystem="hex" direction="9" color="16711680" targetColor="10861523" offsetX="25" offsetY="10" x="1038" y="1629"/>
+    <ColorMark defaultDirection="9" colorSystem="hex" direction="9" color="16711680" targetColor="3828366" offsetX="25" offsetY="10" x="428" y="133"/>
+    <ColorMark defaultDirection="9" colorSystem="hex" direction="9" color="16711680" targetColor="2512768" offsetX="25" offsetY="10" x="221" y="190"/>
+    <ColorMark defaultDirection="9" colorSystem="hex" direction="9" color="16711680" targetColor="1528971" offsetX="25" offsetY="10" x="1526" y="984"/>
+    <LengthMark direction="3" color="16711680" length="381" x="1496" y="1075"/>
+    <LengthMark direction="12" color="16711680" length="496" x="1454" y="1384"/>
+    <LengthMark direction="12" color="16711680" length="20" x="1259" y="1331"/>
+    <LengthMark direction="12" color="16711680" length="20" x="1744" y="1435"/>
+    <ColorMark defaultDirection="9" colorSystem="hex" direction="9" color="16711680" targetColor="8171744" offsetX="25" offsetY="10" x="1445" y="1420"/>
+    <ColorMark defaultDirection="9" colorSystem="hex" direction="9" color="16711680" targetColor="3037572" offsetX="25" offsetY="10" x="2006" y="1394"/>
+  </Marks>
+</MKM>
