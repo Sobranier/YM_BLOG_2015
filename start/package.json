@@ -1,6 +1,6 @@
 {
-  "name": "start",
-  "version": "0.0.0",
+  "name": "Sobranie_Blog_Back",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./app.js"
