@@ -7,11 +7,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var exphbs = require('express-handlebars');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var routes = require('./controllers/index');
+var users = require('./controllers/users');
 
 var app = express();
 
@@ -22,13 +21,13 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+// uncomment after placing your favicon in /asserts
+//app.use(favicon(__dirname + '/asserts/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'asserts')));
 
 app.use('/', routes);
 app.use('/users', users);
