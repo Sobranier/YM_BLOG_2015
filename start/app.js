@@ -27,13 +27,13 @@ app.set('view engine', 'handlebars');
 
 
 
-// uncomment after placing your favicon in /asserts
-//app.use(favicon(__dirname + '/asserts/favicon.ico'));
+// uncomment after placing your favicon in /assets
+//app.use(favicon(__dirname + '/assets/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'asserts')));
+app.use(express.static(path.join(__dirname, 'assets')));
 
 app.use('/', routes);
 app.use('/users', users);
