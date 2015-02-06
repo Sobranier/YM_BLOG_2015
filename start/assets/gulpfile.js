@@ -1,4 +1,5 @@
-var gulp = require('gulp');
+var gulp = require('gulp'),
+    path = require('path');
 
 /*
  *  引入组件
@@ -23,11 +24,12 @@ gulp.task('lint', function() {
 gulp.task('compass', function() {
     gulp.src('./sass/*.scss')
         .pipe(compass({
-            config_file: './config.rb',
-            sassDir: 'sass',
-            cssDir: 'stylesheets',
+            sass: 'sass',
+            css: 'stylesheets',
+            image: 'images'
             force: true
-        }));
+        }))
+        .pipe(gulp.dest('app/assets/temp'));
 });
 
 

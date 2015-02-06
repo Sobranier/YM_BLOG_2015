@@ -1,3 +1,6 @@
 .DS_Store
-mongodb
-node_modules
+npm-debug.log
+.sass-cache/
+mongodb/
+node_modules/
+bower_components/
