@@ -26,7 +26,7 @@ gulp.task('compass', function() {
         .pipe(compass({
             sass: 'sass',
             css: 'stylesheets',
-            image: 'images'
+            image: 'images',
             force: true
         }))
         .pipe(gulp.dest('app/assets/temp'));

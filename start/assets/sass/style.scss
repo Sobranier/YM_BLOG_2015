@@ -1,1 +1,6 @@
-h1{color:blue;}
+@import "sprite/test/index";
+
+h1{
+    color:blue;
+    @include test-sprite(icon_tel);
+}
