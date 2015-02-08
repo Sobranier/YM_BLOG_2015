@@ -3,6 +3,112 @@
   background-repeat: no-repeat;
 }
 
+.wq-navbar-box.navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 66px;
+  height: 100%;
+  z-index: 100;
+}
+.wq-navbar-box.navbar .navbar-header {
+  margin: 11px 3px;
+  padding: 2px;
+  border: 3px solid #31708f;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav {
+  margin: 0;
+  border: 1px solid #31708f;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav li {
+  width: 100%;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav li.menu-item {
+  position: relative;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav li.menu-item > a {
+  padding: 5px;
+  font-size: 36px;
+  line-height: 36px;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav li.menu-item > a:hover {
+  background-color: #ddd;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav li.menu-item:hover ul.dropdown-menu {
+  display: block;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav ul.dropdown-menu {
+  top: -40px;
+  left: 44px;
+  margin-left: 10px;
+  z-index: 1000;
+  width: 160px;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav ul.dropdown-menu:before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: -20px;
+  border: 10px solid transparent;
+  border-right-color: white;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav ul.dropdown-menu a {
+  position: relative;
+  font-size: 20px;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav ul.dropdown-menu a:hover {
+  background-color: white;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav ul.dropdown-menu a:hover:before {
+  content: '{';
+  position: absolute;
+  top: 0;
+  left: 15px;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav ul.dropdown-menu a:hover:after {
+  content: '}';
+  position: absolute;
+  top: 0;
+  right: 15px;
+}
+.wq-navbar-box.navbar .navbar-header .navbar-nav a {
+  font-weight: bold;
+  color: #31708f;
+  text-align: center;
+}
+
+.feature-cover {
+  position: fixed;
+  left: 66px;
+  top: 0;
+  width: 154px;
+  height: 100%;
+  background-color: #eee;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../images/bg/mountain.png");
+  z-index: 99;
+}
+.feature-cover .feature-cover-word {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+  color: white;
+}
+.feature-cover .feature-cover-word h3, .feature-cover .feature-cover-word p {
+  float: left;
+  width: 1em;
+}
+.feature-cover .feature-cover-word .feature-cover-content {
+  margin-top: 40px;
+  margin-left: 10px;
+}
+
+.main-wrapper.container-fluid {
+  margin-left: 220px;
+}
+
 h1 {
   color: blue;
   background-position: 0 0;
