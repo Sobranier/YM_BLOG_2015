@@ -1,20 +1,23 @@
-.test-sprite, h1 {
+.test-sprite {
   background-image: url('../images/test-sb3d9d38069.png');
   background-repeat: no-repeat;
 }
 
 .wq-navbar-box.navbar {
   position: fixed;
-  left: 0;
+  right: 0;
   top: 0;
   width: 66px;
   height: 100%;
+  border-color: transparent;
+  background-color: transparent;
   z-index: 100;
 }
 .wq-navbar-box.navbar .navbar-header {
   margin: 11px 3px;
   padding: 2px;
   border: 3px solid #31708f;
+  background-color: white;
 }
 .wq-navbar-box.navbar .navbar-header .navbar-nav {
   margin: 0;
@@ -39,8 +42,8 @@
 }
 .wq-navbar-box.navbar .navbar-header .navbar-nav ul.dropdown-menu {
   top: -40px;
-  left: 44px;
-  margin-left: 10px;
+  left: -168px;
+  margin-right: 10px;
   z-index: 1000;
   width: 160px;
 }
@@ -48,9 +51,9 @@
   content: '';
   position: absolute;
   top: 50px;
-  left: -20px;
+  right: -20px;
   border: 10px solid transparent;
-  border-right-color: white;
+  border-left-color: white;
 }
 .wq-navbar-box.navbar .navbar-header .navbar-nav ul.dropdown-menu a {
   position: relative;
@@ -76,12 +79,17 @@
   color: #31708f;
   text-align: center;
 }
+.wq-navbar-box.navbar .navbar-collapse {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+}
 
 .feature-cover {
   position: fixed;
-  left: 66px;
+  right: 0;
   top: 0;
-  width: 154px;
+  width: 220px;
   height: 100%;
   background-color: #eee;
   background-repeat: no-repeat;
@@ -101,15 +109,34 @@
   width: 1em;
 }
 .feature-cover .feature-cover-word .feature-cover-content {
-  margin-top: 40px;
+  margin-top: 60px;
   margin-left: 10px;
 }
 
 .main-wrapper.container-fluid {
-  margin-left: 220px;
+  margin-right: 220px;
+}
+.main-wrapper.container-fluid h1.page-title {
+  color: #999;
+}
+
+.post-wrapper {
+  padding-bottom: 30px;
+  border-bottom: 1px dashed #cacaca;
+}
+.post-wrapper:hover {
+  background-color: #fafafa;
+}
+.post-wrapper .post-content {
+  padding: 10px;
+}
+.post-wrapper .post-tag > span {
+  margin-left: 10px;
+}
+.post-wrapper .post-tag .fa {
+  margin-right: 4px;
 }
 
 h1 {
   color: blue;
-  background-position: 0 0;
 }

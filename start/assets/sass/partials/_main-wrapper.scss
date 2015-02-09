@@ -1,0 +1,27 @@
+
+.main-wrapper.container-fluid {
+   margin-right:220px;
+    h1.page-title {
+        color:#999;
+    }
+}
+
+.post-wrapper {
+    padding-bottom:30px;
+    border-bottom:1px dashed #cacaca;
+    &:hover {
+        background-color:#fafafa;
+    }
+    .post-content {
+        padding:10px;
+    }
+    .post-tag {
+        &>span {
+            margin-left:10px;
+        }
+        .fa {
+            margin-right:4px;
+        }
+    }
+
+}

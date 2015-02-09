@@ -1,0 +1,19 @@
+.feature-cover {
+    position: fixed;right: 0;top: 0;
+    width:220px;height:100%;
+    background-color: #eee;background-repeat: no-repeat;background-position: center;background-size: cover;
+    background-image:url('../images/bg/mountain.png');
+    z-index:99;
+    .feature-cover-word {
+        position:absolute;
+        top:2em;left:2em;
+        color:white;
+        h3,p {
+            float:left;
+            width:1em;
+        }
+        .feature-cover-content {
+            margin-top:60px;margin-left:10px;
+        }
+    }
+}
