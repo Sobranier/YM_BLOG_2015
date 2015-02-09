@@ -5,6 +5,22 @@ Here, I will produce my own blog again and share my experience of using JS.
 
 ###My personal blog and website for our team may start at the same time
 
-maybe the will use one suit, or maybe I will try different things
+maybe I will use one suit, or maybe I will try different things
 
+###Basic
 
+#####start-blog
+
+➣  framework: express
+
+➣  javascript lib: jquery
+
+➣  template engines: handlebars
+
+➣  data binding: ?
+
+➣  database: mongodb
+
+➣  database middleware: mongoose
+
+➣  other: ?
