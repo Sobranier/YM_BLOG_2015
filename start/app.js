@@ -36,8 +36,24 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'assets')));
 
 app.use('/', routes);
+var settings = require('./models/settings');
+var flash = require('connect-flash');
+app.use(flash());
 app.use('/users', users);
 
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+
+app.use(session({
+      secret: settings.cookieSecret,
+      key: settings.db,//cookie name
+      cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
+      store: new MongoStore({
+              db: settings.db,
+          host: settings.host,
+          port: settings.port
+            })
+}));
 
 
 

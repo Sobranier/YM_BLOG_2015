@@ -15,6 +15,10 @@
     "ejs": "~0.8.5"
   },
   "devDependencies": {
-    "express-handlebars": "^1.1.0"
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^0.7.0",
+    "express-handlebars": "^1.1.0",
+    "express-session": "^1.10.2",
+    "mongodb": "^1.4.30"
   }
 }

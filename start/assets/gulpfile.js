@@ -29,7 +29,7 @@ gulp.task('compass', function() {
             image: 'images',
             force: true
         }))
-        .pipe(gulp.dest('app/assets/temp'));
+        .pipe(gulp.dest('temp'));
 });
 
 
