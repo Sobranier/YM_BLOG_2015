@@ -1,120 +1,33 @@
 <div class="row">
     <div class="col-md-12">
-        <h1 class="page-title">分类列表:<span>生活点滴</span></h1>
+        <h1 class="page-title">分类列表:<span>{{file.name}}</span></h1>
     </div>
 </div>
 <div class="row">
+    {{#each posts}}
     <div class="col-md-12 post-wrapper">
         <h2 class="post-title">
-            <a href="#" rel="测试前端开发环境">前端开发环境</a>
+            <a href="/post/{{_id}}" rel="阅读全文'{{title}}'">{{title}}</a>
         </h2>
-        <div class="post-tag">
-            <span><i class="fa fa-calendar-o"></i>2015-02-09</span>
-            <span><i class="fa fa-pencil-square-o"></i>评论</span>
-        
-        </div>
         <div class="post-content">
-            <p>本文记录了美团在推广webp的一方面实践，虽然本人负责主要的实施，但领导及同事们提供了很大的帮助，包括方案的讨论及选定和后期文章的审阅等等。本文除了大记录了如何实施，还分享了整个效果评估的方案，总的来说是对新技术的一些尝试。更多内容可以去http://fe.meituan.com观看。</p>
-            <a href="#" rel="#" class="btn btn-primary btn-xs">阅读全文</a>
+            <p>{{content}}</p>
         </div>
         <div class="post-tag">
+            <span><i class="fa fa-calendar-o"></i>{{date}}</span>
             <span>
                 <i class="fa fa-files-o"></i>分类:
-                <a href="#">Javascript</a>
+                {{#each files}}
+                <a href="/files/{{name}}">{{name}}</a>
+                {{/each}}
             </span>
             <span>
                 <i class="fa fa-tags"></i>标签:
-                <a href="#">Javascript</a>
-                ,
-                <a href="#">HTML</a>
-                ,
-                <a href="#">TEST</a>
+                {{#each tags}}
+                <a href="/tags/{{name}}">{{name}}</a>
+                 
+                {{/each}}
             </span>
         </div>
     </div>
-    <div class="col-md-12 post-wrapper">
-        <h2 class="post-title">
-            <a href="#" rel="测试前端开发环境">前端开发环境</a>
-        </h2>
-        <div class="post-tag">
-            <span><i class="fa fa-calendar-o"></i>2015-02-09</span>
-            <span><i class="fa fa-pencil-square-o"></i>评论</span>
-        
-        </div>
-        <div class="post-content">
-            <p>本文记录了美团在推广webp的一方面实践，虽然本人负责主要的实施，但领导及同事们提供了很大的帮助，包括方案的讨论及选定和后期文章的审阅等等。本文除了大记录了如何实施，还分享了整个效果评估的方案，总的来说是对新技术的一些尝试。更多内容可以去http://fe.meituan.com观看。</p>
-            <a href="#" rel="#" class="btn btn-primary btn-xs">阅读全文</a>
-        </div>
-        <div class="post-tag">
-            <span>
-                <i class="fa fa-files-o"></i>分类:
-                <a href="#">Javascript</a>
-            </span>
-            <span>
-                <i class="fa fa-tags"></i>标签:
-                <a href="#">Javascript</a>
-                ,
-                <a href="#">HTML</a>
-                ,
-                <a href="#">TEST</a>
-            </span>
-        </div>
-    </div>
-    <div class="col-md-12 post-wrapper">
-        <h2 class="post-title">
-            <a href="#" rel="测试前端开发环境">前端开发环境</a>
-        </h2>
-        <div class="post-tag">
-            <span><i class="fa fa-calendar-o"></i>2015-02-09</span>
-            <span><i class="fa fa-pencil-square-o"></i>评论</span>
-        
-        </div>
-        <div class="post-content">
-            <p>本文记录了美团在推广webp的一方面实践，虽然本人负责主要的实施，但领导及同事们提供了很大的帮助，包括方案的讨论及选定和后期文章的审阅等等。本文除了大记录了如何实施，还分享了整个效果评估的方案，总的来说是对新技术的一些尝试。更多内容可以去http://fe.meituan.com观看。</p>
-            <a href="#" rel="#" class="btn btn-primary btn-xs">阅读全文</a>
-        </div>
-        <div class="post-tag">
-            <span>
-                <i class="fa fa-files-o"></i>分类:
-                <a href="#">Javascript</a>
-            </span>
-            <span>
-                <i class="fa fa-tags"></i>标签:
-                <a href="#">Javascript</a>
-                ,
-                <a href="#">HTML</a>
-                ,
-                <a href="#">TEST</a>
-            </span>
-        </div>
-    </div>
-    <div class="col-md-12 post-wrapper">
-        <h2 class="post-title">
-            <a href="#" rel="测试前端开发环境">前端开发环境</a>
-        </h2>
-        <div class="post-tag">
-            <span><i class="fa fa-calendar-o"></i>2015-02-09</span>
-            <span><i class="fa fa-pencil-square-o"></i>评论</span>
-        
-        </div>
-        <div class="post-content">
-            <p>本文记录了美团在推广webp的一方面实践，虽然本人负责主要的实施，但领导及同事们提供了很大的帮助，包括方案的讨论及选定和后期文章的审阅等等。本文除了大记录了如何实施，还分享了整个效果评估的方案，总的来说是对新技术的一些尝试。更多内容可以去http://fe.meituan.com观看。</p>
-            <a href="#" rel="#" class="btn btn-primary btn-xs">阅读全文</a>
-        </div>
-        <div class="post-tag">
-            <span>
-                <i class="fa fa-files-o"></i>分类:
-                <a href="#">Javascript</a>
-            </span>
-            <span>
-                <i class="fa fa-tags"></i>标签:
-                <a href="#">Javascript</a>
-                ,
-                <a href="#">HTML</a>
-                ,
-                <a href="#">TEST</a>
-            </span>
-        </div>
-    </div>
-
+    {{/each}}
 </div>

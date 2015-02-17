@@ -121,11 +121,15 @@
 }
 
 .post-wrapper {
+  padding-top: 20px;
   padding-bottom: 30px;
   border-bottom: 1px dashed #cacaca;
 }
 .post-wrapper:hover {
   background-color: #fafafa;
+}
+.post-wrapper h2 {
+  margin-top: 0;
 }
 .post-wrapper .post-content {
   padding: 10px;
