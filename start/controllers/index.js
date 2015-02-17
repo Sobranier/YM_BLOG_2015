@@ -5,12 +5,28 @@ var router = express.Router();
 router.get('/', function(req, res) {
   res.render('home', { title: 'YANWEIQING' });
 });
+router.get('/paper', function(req, res) {
+  res.render('paper', { title: 'YANWEIQING' });
+});
+
+
 router.get('/404', function(req, res) {
   res.render('404', {
       layout: 'boot',
       title:'404'
   });
 });
+
+
+/*dashboard*/
+router.get('/end', function(req, res) {
+  res.render('dashboard', {
+      layout: 'end',
+      title:'BACK DASHBOARD'
+  });
+});
+
+
 /**/
 router.get('/reg', function(req, res) {
   res.render('reg', {

@@ -137,6 +137,14 @@
   margin-right: 4px;
 }
 
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
 h1 {
   color: blue;
 }

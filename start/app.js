@@ -1,13 +1,12 @@
 #!/usr/bin/env node
-var debug = require('debug')('start');
+var express = require('express');
 
+var debug = require('debug')('start');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-var express = require('express');
 var exphbs = require('express-handlebars');
 
 var routes = require('./controllers/index');
@@ -27,7 +26,6 @@ app.set('view engine', 'handlebars');
 
 
 
-// uncomment after placing your favicon in /assets
 //app.use(favicon(__dirname + '/assets/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -42,6 +40,7 @@ app.use(flash());
 app.use('/users', users);
 
 var session = require('express-session');
+/*
 var MongoStore = require('connect-mongo')(session);
 
 app.use(session({
@@ -55,7 +54,7 @@ app.use(session({
             })
 }));
 
-
+*/
 
 
 
@@ -96,5 +95,5 @@ app.use(function(err, req, res, next) {
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
-  debug('Server listening on port ' + server.address().port);
+    debug('Server listening on port ' + server.address().port);
 });
