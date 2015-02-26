@@ -1,7 +1,10 @@
-var express = require('express');
-var router = express.Router();
 
 /* GET users listing. */
-
-
-module.exports = router;
+module.exports = function (app) {
+    app.get('/login', function(req, res) {
+        res.render('login', {
+            layout: 'boot',
+            title: '登陆'
+        });
+    });
+};

@@ -1,16 +1,13 @@
 #!/usr/bin/env node
-var express = require('express');
-
-var debug = require('debug')('start');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var exphbs = require('express-handlebars');
-
-var routes = require('./controllers/index');
-var users = require('./controllers/users');
+var express = require('express'),
+    debug = require('debug')('start'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    exphbs = require('express-handlebars'),
+    fs = require('fs');
 
 var app = express();
 
@@ -22,9 +19,6 @@ app.engine('handlebars', exphbs({
     ]
 }));
 app.set('view engine', 'handlebars');
-
-
-
 //app.use(favicon(__dirname + '/assets/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -32,11 +26,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'assets')));
 
-app.use('/', routes);
+// 路由
+fs.readdirSync('./controllers').forEach(function (file) {
+    if(file.substr(-3) === '.js') {
+        route = require('./controllers/' + file);
+        route(app);
+    }
+});
+
 var settings = require('./models/settings');
 var flash = require('connect-flash');
 app.use(flash());
-app.use('/users', users);
 
 var session = require('express-session');
 /*
@@ -87,8 +87,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-
 
 
 app.set('port', process.env.PORT || 3000);
