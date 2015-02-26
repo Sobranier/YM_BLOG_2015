@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'assets')));
+app.set('port', process.env.PORT || 3000);
 
 // 路由
 fs.readdirSync('./controllers').forEach(function (file) {
@@ -34,27 +35,10 @@ fs.readdirSync('./controllers').forEach(function (file) {
     }
 });
 
-var settings = require('./models/settings');
 var flash = require('connect-flash');
 app.use(flash());
 
 var session = require('express-session');
-/*
-var MongoStore = require('connect-mongo')(session);
-
-app.use(session({
-      secret: settings.cookieSecret,
-      key: settings.db,//cookie name
-      cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
-      store: new MongoStore({
-              db: settings.db,
-          host: settings.host,
-          port: settings.port
-            })
-}));
-
-*/
-
 
 
 // catch 404 and forward to error handler
@@ -89,8 +73,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), function() {
-    debug('Server listening on port ' + server.address().port);
+app.listen(app.get('port'), function() {
+    console.log('Server listening on port ' + app.get('port'));
 });
