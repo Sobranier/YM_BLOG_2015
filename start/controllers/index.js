@@ -1,6 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
+var Test = require('../models/test'),
+    mongoose = require('mongoose');
+
+Test = mongoose.model('Test');
+
+
+
 /* GET home page. */
 router.get('/', function(req, res) {
     res.render('home', {
@@ -116,6 +123,23 @@ router.get('/', function(req, res) {
 router.get('/paper', function(req, res) {
   res.render('paper', { title: 'YANWEIQING' });
 });
+router.get('/test', function(req, res) {
+    var newTest = new Test({
+        name:'测试者2'
+    });
+    newTest.save();
+
+    var tt = [];
+    Test.find({}).exec(function (err, blogs) {
+        tt.push(blogs);
+    });
+    console.log(tt);
+    res.render('papertest', {
+        title: 'mongo测试',
+        test: tt
+    });
+});
+
 
 
 router.get('/404', function(req, res) {
@@ -137,14 +161,14 @@ router.get('/end', function(req, res) {
 
 /**/
 router.get('/reg', function(req, res) {
-  res.render('reg', {
-      layout: 'boot',
-      title: '注册'
-  });
+    res.render('reg', {
+        layout: 'boot',
+        title: '注册'
+    });
 });
 router.post('/reg', function(req, res) {
 });
-router.post('/post', function(req, res) {
+router.get('/post', function(req, res) {
     res.render('post', {
         layout: 'boot',
         title: '发表'
@@ -152,7 +176,7 @@ router.post('/post', function(req, res) {
 });
 router.post('/post', function(req, res) {
 });
-router.post('/login', function(req, res) {
+router.get('/login', function(req, res) {
     res.render('login', {
         layout: 'boot',
         title: '登陆'
