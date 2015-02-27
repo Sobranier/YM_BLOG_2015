@@ -5,10 +5,13 @@ User = mongoose.model('User');
 
 module.exports = function (app) {
 
-    //app.get('/logout');
+    app.get('/logout', function (req, res) {
+        req.session.user = null;
+        res.redirect('/');
+    });
 
     app.get('/login', checkNotLogin);
-    app.get('/login', function(req, res) {
+    app.get('/login', function (req, res) {
         /* 事先做好准备，存入一组数据
         var newUser = new User({
             account: 'test',
@@ -21,7 +24,7 @@ module.exports = function (app) {
             tt.push(user);
         });
 
-        loginname = req.query.bname ? req.query.bname : '虾米';
+        loginname = req.query.bname ? req.query.bname : '虾米儿';
 
         res.render('login', {
             layout: 'boot',
@@ -78,10 +81,12 @@ module.exports = function (app) {
      * */
 
     function checkNotLogin (req, res, next) {
-        console.log(req.session.user);
+        console.log("检验未登陆——" + req.session.user);
         if (req.session.user) {
+            console.log('检测到登陆——' + req.session.user);
             res.redirect('back');
         }
+        next();
     }
 
 };
