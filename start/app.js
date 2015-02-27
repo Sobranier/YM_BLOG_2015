@@ -7,11 +7,12 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     exphbs = require('express-handlebars'),
-    fs = require('fs');
+    fs = require('fs'),
+    mongoose = require('mongoose');
 
 var app = express();
+mongoose.connect('mongodb://localhost/test');
 
-// view engine setup
 app.engine('handlebars', exphbs({
     defaultLayout: 'main',
     partialsDir: [
@@ -19,26 +20,26 @@ app.engine('handlebars', exphbs({
     ]
 }));
 app.set('view engine', 'handlebars');
+app.set('port', process.env.PORT || 3000);
 //app.use(favicon(__dirname + '/assets/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'assets')));
-app.set('port', process.env.PORT || 3000);
+app.use(cookieParser());
 
-// 路由
+app.use(require('express-session')({
+    key: 'session',
+    secret: 'SUPER SECRET SECRET',
+    store: require('mongoose-session')(mongoose)
+}));
+
 fs.readdirSync('./controllers').forEach(function (file) {
     if(file.substr(-3) === '.js') {
         route = require('./controllers/' + file);
         route(app);
     }
 });
-
-var flash = require('connect-flash');
-app.use(flash());
-
-var session = require('express-session');
 
 
 // catch 404 and forward to error handler
@@ -71,6 +72,8 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+
 
 
 

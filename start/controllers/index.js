@@ -148,24 +148,8 @@ module.exports = function (app) {
     });
 
 
-    /*dashboard*/
-    app.get('/end', function(req, res) {
-      res.render('dashboard', {
-          layout: 'end',
-          title:'BACK DASHBOARD'
-      });
-    });
 
 
-    /**/
-    app.get('/reg', function(req, res) {
-        res.render('reg', {
-            layout: 'boot',
-            title: '注册'
-        });
-    });
-    app.post('/reg', function(req, res) {
-    });
     app.get('/post', function(req, res) {
         res.render('post', {
             layout: 'boot',
@@ -175,9 +159,5 @@ module.exports = function (app) {
     app.post('/post', function(req, res) {
     });
 
-    app.post('/login', function(req, res) {
-    });
-    app.post('/logout', function(req, res) {
-    });
 };
 
