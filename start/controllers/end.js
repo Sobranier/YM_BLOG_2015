@@ -12,8 +12,9 @@ module.exports = function (app) {
     });
 
     function checkLogin (req, res, next) {
-        console.log("检验已登陆" + req.session.user);
+        console.log("检验是否在线——" + req.session.user);
         if (!req.session.user) {
+            console.log('未检测到在线');
             res.redirect('/login');
         }
         next();

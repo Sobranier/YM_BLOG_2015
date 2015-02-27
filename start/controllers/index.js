@@ -118,6 +118,7 @@ module.exports = function (app) {
             ]
         });
     });
+
     app.get('/paper', function(req, res) {
       res.render('paper', { title: 'YANWEIQING' });
     });

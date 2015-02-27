@@ -81,7 +81,7 @@ module.exports = function (app) {
      * */
 
     function checkNotLogin (req, res, next) {
-        console.log("检验未登陆——" + req.session.user);
+        console.log("检验是否不在线——" + req.session.user);
         if (req.session.user) {
             console.log('检测到登陆——' + req.session.user);
             res.redirect('back');
