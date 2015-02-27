@@ -19,6 +19,7 @@ module.exports = function (app) {
         });
         newUser.save();
         */
+        // 以下tt数据只是测试环境展示用
         var tt = [];
         User.find({}).exec(function (err, user) {
             tt.push(user);
