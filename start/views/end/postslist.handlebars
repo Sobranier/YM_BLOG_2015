@@ -1,30 +1,85 @@
 <div class="row">
+    <!--面包屑-->
     <div class="col-md-12">
         <ol class="breadcrumb">
             <li><a href="#ui-bread">首页</a></li>
             <li>文字</li>
             <li class="active">{{title}}</li>
         </ol>
-        <h1 class="page-title"><span>TEST TITLE</span></h1>
-    </div>
-    <div class="col-md-12">
-        <pre style="height:300px;"></pre>
-    </div>
-    <div class="col-md-12">
-        <div class="post-tag">
-            <span>
-                <i class="fa fa-files-o"></i>分类:
-                <a href="#">Javascript</a>
-            </span>
-            <span>
-                <i class="fa fa-tags"></i>标签:
-                <a href="#">Javascript</a>
-                ,
-                <a href="#">HTML</a>
-                ,
-                <a href="#">TEST</a>
-            </span>
+
+        <!--查询-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">查询条件</h3>
+            </div>
+            <div class="panel-body">
+                <form role="form" class="form-horizontal" id="form_search">
+                    <div class="form-group col-sm-4">
+                        <label class="control-label col-xs-3">标题</label>
+                        <div class="col-xs-9">
+                            <input type="text" name="title" class="form-control" placeholder="填写标题"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        <label class="control-label col-xs-3">状态</label>
+                        <div class="col-xs-9">
+                            <select name="ifpublic" class="form-control">
+                                <option value="1">上线</option>
+                                <option value="0">下线</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <button class="btn btn-primary btn-block" id="form_submit">查询</button>
+                    </div>
+                </form>
+            </div>
         </div>
+
+        <!--列表-->
+        <div class="table-responsive">
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>标题</th>
+                        <th>日期</th>
+                        <th>公开</th>
+                        <th>编辑</th>
+                    </tr>
+                </thead>
+                <tbody id="table_search">
+                </tbody>
+            </table>
+        </div>
+
+
     </div>
 </div>
+
+<script>
+    $('#form_submit').click(function(event){
+        event.preventDefault();
+        console.log($('#form_search').serialize());
+        $.post('/posts/search', {},
+        function (data, status) {
+            if (status == 'success') {
+                for (var i = 0; i < data['posts'].length; i ++) {
+                    var pos = data['posts'][i];
+                        tr ="<tr>" +
+                            "   <td>" + pos['_id'] + "</td>" +
+                            "   <td>" + pos['title'] + "</td>" +
+                            "   <td>" + pos['date'] + "</td>" +
+                            "   <td></td>" +
+                            "   <td><a class='fa fa-pencil-square-o' href='/end/paperedit/" + pos['_id'] + "'></a></td>" +
+                            "</tr>";
+                    $('#table_search').append($(tr));
+                }
+            } else {
+                alert('数据加载失败');
+            }
+        });
+    });
+</script>
 

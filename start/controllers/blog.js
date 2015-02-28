@@ -61,10 +61,24 @@ module.exports = function (app) {
 
     });
 
+    app.post('/posts/search', function (req, res) {
+        console.log(req.body);
+        console.log(req.body.title);
+
+        Blog.find({}).exec(function (err, blogs) {
+            for (var index in blogs) {
+                var date = blogs[index].date;
+                blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();
+                blogs[index].year = date.getFullYear();
+            }
+
+            res.json({posts: blogs});
+        });
+    });
+
     app.get('/tags/:tag', function (req, res) {
         console.log(req.params.tag);
-        res.render('paper', {title: 'tag'});
-    
+        res.render('paper', {title: 'tag'}); 
     });
 
 

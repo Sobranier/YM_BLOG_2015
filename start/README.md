@@ -7,8 +7,8 @@
 * 开始使用gulp  ✔
 * express高级使用，前端架构逐步生成  ✔
 * 阿里云系统搭建  ✔
-* jquery/angular选型，使用（后台系统使用angular，前端使用jquery+require）
 * mongoose初步  ✔
+* jquery/angular选型，使用（后台系统使用angular，前端使用jquery+require）
 * mongoose深入
 * gaevent深入
 
@@ -76,6 +76,8 @@
 
     e、blog event track
 
+    f、先使用handlebars后使用angular
+
 3、优化
 
     a、markdown解析
@@ -85,6 +87,7 @@
     c、文章关联关系（前后篇等）
 
     d、404 (前后台的404可能不同的展现方式，后台404直接导到dashboard，前台的可能设置404)
+
     e、登陆状态下前台可以直接跳转到后台
 
     f、设置ico

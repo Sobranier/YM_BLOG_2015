@@ -7,3 +7,9 @@
 * 2015-02-07 初步使用gulp compass进行sprite拼图，遇到非常神奇的问题，雪碧图的_index需要放在特定的地点，但是对应的图片放在另一个文件夹里面
 * 2015-02-09 初步使用express-handlebars模板，初步搭建博客界面
 
+####Todo
+
+* 可适配(css响应)
+* angular、handlebars共用问题
+
+

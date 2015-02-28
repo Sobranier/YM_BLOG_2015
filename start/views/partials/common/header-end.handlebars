@@ -9,17 +9,17 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="dropdown active">
+                <li class="dropdown {{#if showPost}}active{{/if}}">
                     <a href="/end/postslist" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">文字 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/end/postslist">文章列表</a></li>
                         <li class="divider"></li>
-                        <li><a href="/end/post">发表文字</a></li>
+                        <li><a href="/end/paperedit">发表文字</a></li>
                     </ul>
                 </li>
-                <li><a href="#">图片</a></li>
-                <li><a href="#">音乐</a></li>
-                <li><a href="#">书籍</a></li>
+                <li class="{{#if showPic}}active{{/if}}"><a href="/end/pic">图片</a></li>
+                <li class="{{#if showMusic}}active{{/if}}"><a href="/end/music">音乐</a></li>
+                <li class="{{#if showBook}}active{{/if}}"><a href="/end/book">书籍</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
