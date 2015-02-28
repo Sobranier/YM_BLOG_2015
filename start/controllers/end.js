@@ -5,7 +5,7 @@ module.exports = function (app) {
 
     app.get('/end', checkLogin);
     app.get('/end', function (req, res) {
-      res.render('dashboard', {
+      res.render('end/dashboard', {
           layout: 'end',
           title: 'BACK DASHBOARD'
       });
@@ -25,6 +25,13 @@ module.exports = function (app) {
             layout: 'end',
             title: '文章列表'
         });
+    });
+
+
+    /*路由匹配不成功*/
+    app.get('/end/*', checkLogin);
+    app.get('/end/*', function (req, res) {
+        res.redirect('/end');
     });
 
     function checkLogin (req, res, next) {

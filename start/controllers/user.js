@@ -86,7 +86,8 @@ module.exports = function (app) {
         console.log("检验是否不在线——" + req.session.user);
         if (req.session.user) {
             console.log('检测到登陆——' + req.session.user);
-            res.redirect('back');
+            // 这里的导向待定 
+            res.redirect('/end');
         } else {
             next();
         }
