@@ -7,11 +7,12 @@ Test = mongoose.model('Test');
 /* GET home page. */
 module.exports = function (app) {
     
-
     app.get('/paper', function(req, res) {
       res.render('paper', { title: 'YANWEIQING' });
     });
     app.get('/test', function(req, res) {
+
+        // 这里其实是创建了一个Entity,此newTest即为Entity
         var newTest = new Test({
             name:'测试者2'
         });
@@ -28,17 +29,12 @@ module.exports = function (app) {
         });
     });
 
-
-
     app.get('/404', function(req, res) {
       res.render('404', {
           layout: 'boot',
           title:'404'
       });
     });
-
-
-
 
     app.get('/post', function(req, res) {
         res.render('post', {

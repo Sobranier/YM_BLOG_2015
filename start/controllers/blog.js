@@ -60,4 +60,17 @@ module.exports = function (app) {
         });
 
     });
+
+    app.get('/tags/:tag', function (req, res) {
+        console.log(req.params.tag);
+        res.render('paper', {title: 'tag'});
+    
+    });
+
+
+
+
+
+
+
 }

@@ -10,6 +10,8 @@ var testSchema = new Schema({
 
 testModel = mongoose.model('Test', testSchema);
 
+/*(
+ *  find out the function
 function BlogTest(test) {
     this.name = test.name;
 };
@@ -34,6 +36,7 @@ BlogTest.get = function (config, callback) {
 }
 
 module.exports = BlogTest;
+*/
 
 
 
