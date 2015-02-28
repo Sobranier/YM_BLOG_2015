@@ -4,11 +4,27 @@ var mongoose = require('mongoose');
 module.exports = function (app) {
 
     app.get('/end', checkLogin);
-    app.get('/end', function(req, res) {
+    app.get('/end', function (req, res) {
       res.render('dashboard', {
           layout: 'end',
-          title:'BACK DASHBOARD'
+          title: 'BACK DASHBOARD'
       });
+    });
+
+    app.get('/end/post', checkLogin);
+    app.get('/end/post', function (req, res) {
+        res.render('end/post', {
+            layout: 'end',
+            title: '发表文字'
+        });
+    });
+
+    app.get('/end/postslist', checkLogin);
+    app.get('/end/postslist', function (req, res) {
+        res.render('end/postslist', {
+            layout: 'end',
+            title: '文章列表'
+        });
     });
 
     function checkLogin (req, res, next) {
@@ -16,7 +32,8 @@ module.exports = function (app) {
         if (!req.session.user) {
             console.log('未检测到在线');
             res.redirect('/login');
+        } else {
+            next();
         }
-        next();
     }
 };

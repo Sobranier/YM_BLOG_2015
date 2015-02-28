@@ -1,12 +1,34 @@
 <nav class="navbar navbar-default">
-    <div class="navbar-header">
-        <a href="#">BackGround</a>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/end">
+                <i class="fa fa-apple"></i> 
+                后台
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown active">
+                    <a href="/end/postslist" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">文字 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/end/postslist">文章列表</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/end/post">发表文字</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">图片</a></li>
+                <li><a href="#">音乐</a></li>
+                <li><a href="#">书籍</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout">登出</a></li>
+            </ul>
+
+
+
+
+        </div>
     </div>
-    <ul class="nav navbar-nav">
-        <li class="menu-item"><a href="#">博客</a></li> 
-        <li class="menu-item"><a href="#">图片</a></li> 
-        <li class="menu-item"><a href="#">音乐</a></li> 
-        <li class="menu-item"><a href="#">书籍</a></li> 
-    </ul>
 </nav>
- 

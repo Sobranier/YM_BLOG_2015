@@ -10,8 +10,8 @@ module.exports = function (app) {
             title: '前端实践',
             date: new Date(),
             content: '本文记录了美团在推广webp的一方面实践，虽然本人负责主要的实施，但领导及同事们提供了很大的帮助，包括方案的讨论及选定和后期文章的审阅等等。本文除了大记录了如何实施，还分享了整个效果评估的方案，总的来说是对新技术的一些尝试。更多内容可以去http://fe.meituan.com观看。',
-            summary: '这是测试的贱贱贱加加加加',
-            alias: 'test',
+            summary: '这是测试的贱贱贱加加加加123',
+            alias: 'test2',
             topics: [
                 {
                     name: 'JavaScript'
@@ -42,7 +42,7 @@ module.exports = function (app) {
             res.render('home', {
                 title: 'YANWEIQING',
                 file: {
-                    name: '测试测试',
+                    name: '最近更新',
                     content: [
                         {
                             p: '测试测试测试测试测试'

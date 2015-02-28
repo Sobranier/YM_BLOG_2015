@@ -1,8 +1,11 @@
 
 .main-wrapper.container-fluid {
-   margin-right:220px;
+    margin-right:220px;
     h1.page-title {
         color:#999;
+    }
+    &.main-wrapper--end {
+        margin-right:66px;
     }
 }
 

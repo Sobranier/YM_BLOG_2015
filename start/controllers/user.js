@@ -19,6 +19,7 @@ module.exports = function (app) {
         });
         newUser.save();
         */
+        console.log('进入到login');
         // 以下tt数据只是测试环境展示用
         var tt = [];
         User.find({}).exec(function (err, user) {
@@ -86,8 +87,9 @@ module.exports = function (app) {
         if (req.session.user) {
             console.log('检测到登陆——' + req.session.user);
             res.redirect('back');
+        } else {
+            next();
         }
-        next();
     }
 
 };

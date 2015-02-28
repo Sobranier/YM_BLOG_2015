@@ -4,11 +4,12 @@
         {{> common/meta_module}}
         <title>{{title}}</title>
         {{> common/css_module}}
+        {{> common/js_module}}
     </head>
     <body>
         {{> common/header-simple}}
-        {{> common/header-end}}
-        <div class="container-fluid main-wrapper">
+        <div class="container-fluid main-wrapper main-wrapper--end">
+            {{> common/header-end}}
             {{{body}}}
             {{> common/footer}}
         </div>

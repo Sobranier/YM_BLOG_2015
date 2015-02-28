@@ -119,6 +119,9 @@
 .main-wrapper.container-fluid h1.page-title {
   color: #999;
 }
+.main-wrapper.container-fluid.main-wrapper--end {
+  margin-right: 66px;
+}
 
 .post-wrapper {
   padding-top: 20px;
