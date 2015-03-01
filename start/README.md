@@ -11,6 +11,7 @@
 * jquery/angular选型，使用（后台系统使用angular，前端使用jquery+require）
 * mongoose深入
 * gaevent深入
+* flatui使用
 
 
 
@@ -93,4 +94,6 @@
     e、登陆状态下前台可以直接跳转到后台
 
     f、设置ico
+
+    g、文章是否需要设置三种状态(公开展示，公开但是需要url无显示入口，不公开)(前台智能获取前两种公开的blog)
 

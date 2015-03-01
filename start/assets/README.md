@@ -10,6 +10,6 @@
 ####Todo
 
 * 可适配(css响应)
-* angular、handlebars共用问题
+* angular、handlebars共用问题(angualr问题可以通过interpolateProvider，不过后台界面部分最终不准备使用angualr)
 
 

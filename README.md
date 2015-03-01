@@ -17,6 +17,10 @@ maybe I will use one suit, or maybe I will try different things
 
 ➣  template engines: handlebars
 
+➣  css base: bootstrap + flat-ui
+
+➣  css extension: sass
+
 ➣  data binding: ?
 
 ➣  database: mongodb
