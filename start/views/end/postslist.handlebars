@@ -38,6 +38,7 @@
         </div>
 
         <!--列表-->
+        <h1 class="page-title">{{title}}</h1>
         <div class="table-responsive">
             <table class="table table-bordered table-condensed">
                 <thead>
@@ -65,6 +66,7 @@
         $.post('/posts/search', {},
         function (data, status) {
             if (status == 'success') {
+                $('#table_search').empty();
                 for (var i = 0; i < data['posts'].length; i ++) {
                     var pos = data['posts'][i];
                         tr ="<tr>" +

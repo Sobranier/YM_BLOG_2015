@@ -81,10 +81,4 @@ module.exports = function (app) {
         res.render('paper', {title: 'tag'}); 
     });
 
-
-
-
-
-
-
 }

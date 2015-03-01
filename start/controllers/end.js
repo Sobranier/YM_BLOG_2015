@@ -1,6 +1,9 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    Blog = require('../models/blog');
 
-/* GET home page. */
+Blog = mongoose.model('Blog');
+
+/* 后台controller */
 module.exports = function (app) {
 
     app.get('/end', checkLogin);
@@ -32,10 +35,13 @@ module.exports = function (app) {
     });
     app.get('/end/paperedit/:id', checkLogin);
     app.get('/end/paperedit/:id', function (req, res) {
-        res.render('end/post', {
-            layout: 'end',
-            title: '发表文字',
-            showPost: true
+        Blog.find({_id: req.params.id}).exec(function (err, blog) {
+            res.render('end/post', {
+                layout: 'end',
+                title: '发表文字',
+                showPost: true,
+                post: blog[0]
+            });
         });
     });
 
