@@ -45,6 +45,16 @@ module.exports = function (app) {
         });
     });
 
+    // 标签管理页
+    app.get('/end/topictag', checkLogin);
+    app.get('/end/topictag', function (req, res) {
+        res.render('end/topictag', {
+            layout: 'end',
+            title: '标签管理',
+            showPost: true
+        });
+    });
+
 
     app.get('/end/pic', checkLogin);
     app.get('/end/pic', function (req, res) {

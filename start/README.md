@@ -78,7 +78,7 @@
 
     f、先使用handlebars后使用angular (handlebars部署完成，不准备使用angular)  ✔
 
-    g、tag、topic处理（包括添加tag界面、topic界面以及在编辑界面的展示）
+    g、tag、topic处理（包括添加tag界面、topic界面以及在编辑界面的展示,tag界面管理标签，其他界面不涉及添加功能，只进行读取）
 
 3、优化
 
