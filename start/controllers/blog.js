@@ -11,27 +11,13 @@ module.exports = function (app) {
     app.get('/', function(req, res) {
         /*
         var newBlog = new Blog({
-            title: '前端实践233',
+            title: '数据模型新测试',
             date: new Date(),
             content: '本文记录了美团在推广webp的一方面实践，虽然本人负责主要的实施，但领导及同事们提供了很大的帮助，包括方案的讨论及选定和后期文章的审阅等等。本文除了大记录了如何实施，还分享了整个效果评估的方案，总的来说是对新技术的一些尝试。更多内容可以去http://fe.meituan.com观看。',
             summary: '这是测试的贱贱贱加加加加123',
             alias: 'test2',
-            topics: [
-                {
-                    name: 'JavaScript'
-                }
-            ],
-            tags: [
-                {
-                    name: 'Html'
-                },
-                {
-                    name: 'JavaScript'
-                },
-                {
-                    name: 'Node'
-                }
-            ],
+            topics: ['JavaScript', '生活'],
+            tags: ['Html', 'JavaScript', 'Node', '前端', '生活'],
             ifpublic: false
         });
         newBlog.save();

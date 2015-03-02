@@ -1,4 +1,4 @@
-## 服务端Node + 前端 js
+## 服务端Node + 前端JS
 
 * 安装express（初级使用） ✔
 * 安装express-handlerbars  ✔
@@ -11,7 +11,7 @@
 * jquery/angular选型，使用（后台系统使用angular，前端使用jquery+require）
 * mongoose深入
 * gaevent深入
-* flatui使用
+* flat-ui使用  ✔
 
 
 
@@ -81,7 +81,7 @@
 
     f、先使用handlebars后使用angular (handlebars部署完成，不准备使用angular)  ✔
 
-    g、tag、topic处理（包括添加tag界面、topic界面以及在编辑界面的展示,tag界面管理标签，其他界面不涉及添加功能，只进行读取）
+    g、tag、topic处理（包括添加tag界面、topic界面以及在编辑界面的展示,tag界面管理标签，其他界面不涉及添加功能，只进行读取） ✔
 
 3、优化
 

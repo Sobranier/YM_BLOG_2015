@@ -1,7 +1,11 @@
 var mongoose = require('mongoose'),
-    Blog = require('../models/blog');
+    Blog = require('../models/blog'),
+    Tag = require('../models/tag'),
+    Topic = require('../models/topic');
 
 Blog = mongoose.model('Blog');
+Tag = mongoose.model('Tag');
+Topic = mongoose.model('Topic');
 
 /* 后台controller */
 module.exports = function (app) {
@@ -45,17 +49,64 @@ module.exports = function (app) {
         });
     });
 
-    // 标签管理页
-    app.get('/end/topictag', checkLogin);
-    app.get('/end/topictag', function (req, res) {
-        res.render('end/topictag', {
-            layout: 'end',
-            title: '标签管理',
-            showPost: true
+    // 标签、分类管理页(未来需要拆分)
+    app.get('/end/tag', checkLogin);
+    app.get('/end/tag', function (req, res) {
+        Tag.find({}).exec(function (err, tags) {
+             res.render('end/topictag', {
+                layout: 'end',
+                title: '标签管理',
+                showPost: true,
+                differ: 'tag',
+                topictags: tags
+            });       
+        });
+    });
+    app.get('/end/topic', checkLogin);
+    app.get('/end/topic', function (req, res) {
+        Topic.find({}).exec(function (err, topics) {
+            res.render('end/topictag', {
+                layout: 'end',
+                title: '分类管理',
+                showPost: true,
+                differ: 'topic',
+                topictags: topics
+            });
         });
     });
 
+    // 标签、分类操作
+    app.post('/end/tagadd', checkLogin);
+    app.post('/end/tagadd', function (req, res) {
+        var newTag = new Tag({
+            name: req.body.name
+        });
+        newTag.save();
+        res.redirect('back');
+    });
+    app.post('/end/topicadd', checkLogin);
+    app.post('/end/topicadd', function (req, res) {
+        var newTopic = new Topic({
+            name: req.body.name
+        });
+        newTopic.save();
+        res.redirect('back');
+    });
+    app.get('/end/ttdel/:id', function (req, res) {
+        console.log(req.params.id);
+        // 此处暂时将tag、topic的删除功能写在一起
+        Tag.remove({_id: req.params.id}, function (err, tt) {
+            console.log('删除tag');
+        });
+        Topic.remove({_id: req.params.id}, function (err, tt) {
+            console.log('删除topic');
+        });
 
+        res.redirect('back');
+    });
+
+
+    // 图片后台
     app.get('/end/pic', checkLogin);
     app.get('/end/pic', function (req, res) {
         res.render('end/pic', {

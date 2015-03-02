@@ -50,9 +50,6 @@ module.exports = function (app) {
                 }
             }
             if (isUser) {
-                // 这个应该是为了保持登陆状态用的
-
-                res.cookie('uid', account, {maxAge: 900000});
                 req.session.user = account;
 
                 res.redirect('/end');
@@ -62,21 +59,6 @@ module.exports = function (app) {
             }
         });
     });
-
-    /*
-
-    function checkLogin (req, res, next) {
-        console.log(req.session.user);
-        if (undefined == req.session.user) {
-            console.log('未登陆');
-            res.redirect('/login');
-        } else {
-            console.log('已登陆');
-            res.redirect('back');
-        }
-        next();
-    }
-    */
 
     /*
      *  注意这里需要写两个check
