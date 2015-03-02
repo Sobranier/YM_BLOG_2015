@@ -71,7 +71,7 @@ module.exports = function (app) {
             var date = blogs[0].date;
             blogs[0].day = (date.getMonth() + 1) + "-" + date.getDate();
             blogs[0].year = date.getFullYear();
-            res.render('paper', {
+            res.render('front/paper', {
                 title: blogs[0].title,
                 post: blogs[0]
             });
@@ -79,16 +79,10 @@ module.exports = function (app) {
     });
 
 
+    // 前台标签页面
     app.get('/tags', function (req, res) {
-        /*
-        var newTag = new Tag({
-            name: 'CSS'
-        });
-        newTag.save();
-        */
-
         Tag.find({}).exec(function (err, tags) {
-            res.render('tag', {
+            res.render('front/tag', {
                 title: '标签列表',
                 tags: tags
             });
@@ -96,28 +90,28 @@ module.exports = function (app) {
     });
     app.get('/tags/:tag', function (req, res) {
         console.log(req.params.tag);
-        res.render('paper', {title: 'tag'}); 
+        res.render('front/paper', {title: 'tag'}); 
     });
 
-
+    // 前台分类页面
     app.get('/topics', function (req, res) {
-        /*
-        var newTopic = new Topic({
-            name: 'JavaScript'
-        });
-        newTopic.save();
-        */
-
         Topic.find({}).exec(function (err, topics) {
-            res.render('topic', {
-                title: '标签列表',
+            res.render('front/topic', {
+                title: '分类列表',
                 topics: topics
             });
         });
     });
     app.get('/topics/:topic', function (req, res) {
         console.log(req.params.topic);
-        res.render('paper', {title: 'topic'});
+        res.render('front/paper', {title: 'topic'});
     })
+
+    // 前台历史
+    app.get('/archives', function (req, res) {
+        res.render('front/archives', {
+            title: '文章存档'
+        });
+    });
 
 }

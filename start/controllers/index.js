@@ -8,7 +8,7 @@ Test = mongoose.model('Test');
 module.exports = function (app) {
     
     app.get('/paper', function(req, res) {
-      res.render('paper', { title: 'YANWEIQING' });
+      res.render('front/paper', { title: 'YANWEIQING' });
     });
     app.get('/test', function(req, res) {
 
