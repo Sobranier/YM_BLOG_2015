@@ -29,22 +29,41 @@ module.exports = function (app) {
     });
 
     // 修改页
-    app.get('/end/paperedit', checkLogin);
-    app.get('/end/paperedit', function (req, res) {
-        res.render('end/post', {
-            layout: 'end',
-            title: '发表文字',
-            showPost: true
-        });
-    });
-    app.get('/end/paperedit/:id', checkLogin);
-    app.get('/end/paperedit/:id', function (req, res) {
+    app.get('/end/paperedit/:id?', checkLogin);
+    app.get('/end/paperedit/:id?', function (req, res) {
         Blog.find({_id: req.params.id}).exec(function (err, blog) {
-            res.render('end/post', {
-                layout: 'end',
-                title: '发表文字',
-                showPost: true,
-                post: blog[0]
+            Tag.find({}).exec(function (err, tags) {
+                Topic.find({}).exec(function (err, topics) {
+                    for (var i = 0; i < blog[0].tags.length; i ++) {
+                        for (var j = 0; j < tags.length; j ++) {
+                            if (tags[j].name == blog[0].tags[i]) {
+                                tags[j].selected = true;
+                                break;
+                            }
+                        }
+                    }
+                    for (var i = 0; i < blog[0].topics.length; i ++) {
+                        for (var j = 0; j < topics.length; j ++) {
+                            if (topics[j].name == blog[0].topics[i]) {
+                                topics[j].selected = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    if (blog[0].ifpublic) {
+                        blog[0].status = true;
+                    }
+
+                    res.render('end/post', {
+                        layout: 'end',
+                        title: '发表文字',
+                        showPost: true,
+                        tags: tags,
+                        topics: topics,
+                        post: blog[0]
+                    });               
+                });
             });
         });
     });
