@@ -11,19 +11,19 @@ module.exports = function (app) {
     app.get('/', function(req, res) {
         /*
         var newBlog = new Blog({
-            title: '数据模型新测试',
+            title: '这还是一个测试0011',
             date: new Date(),
             content: '本文记录了美团在推广webp的一方面实践，虽然本人负责主要的实施，但领导及同事们提供了很大的帮助，包括方案的讨论及选定和后期文章的审阅等等。本文除了大记录了如何实施，还分享了整个效果评估的方案，总的来说是对新技术的一些尝试。更多内容可以去http://fe.meituan.com观看。',
             summary: '这是测试的贱贱贱加加加加123',
-            alias: 'test2',
-            topics: ['JavaScript', '生活'],
-            tags: ['Html', 'JavaScript', 'Node', '前端', '生活'],
-            ifpublic: false
+            alias: 'test0011',
+            topics: ['JavaScript', 'life0002'],
+            tags: ['Html', 'JavaScript', 'Node', '前端', 'life0002'],
+            ifpublic: true
         });
         newBlog.save();
         */
 
-        Blog.find({}).exec(function (err, blogs) {
+        Blog.find({}).sort({'date':-1}).exec(function (err, blogs) {
             for (var index in blogs) {
                 var date = blogs[index].date;
                 blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();
@@ -34,15 +34,9 @@ module.exports = function (app) {
                 file: {
                     name: '最近更新',
                     content: [
-                        {
-                            p: '测试测试测试测试测试'
-                        },
-                        {
-                            p: '测试测试测试测试测试'
-                        },
-                        {
-                            p: '测试测试测试测试测试'
-                        }
+                        '测试测试测试1',
+                        '测试测试测试2',
+                        '测试测试测试3',
                     ]
                 },
                 posts: blogs
@@ -90,7 +84,18 @@ module.exports = function (app) {
     });
     app.get('/tags/:tag', function (req, res) {
         console.log(req.params.tag);
-        res.render('front/paper', {title: 'tag'}); 
+        res.render('front/paperlist', {
+            title: req.params.tag + ' - 寿百年',
+            file: {
+                title: '随笔测试',
+                content: [
+                    '你好吗',
+                    '你妹',
+                    '你'
+                ]
+            },
+            kind: '文章列表'
+        }); 
     });
 
     // 前台分类页面
@@ -104,7 +109,17 @@ module.exports = function (app) {
     });
     app.get('/topics/:topic', function (req, res) {
         console.log(req.params.topic);
-        res.render('front/paper', {title: 'topic'});
+        Topic.find({name: req.params.topic}).exec(function (err, topic) {
+            if (topic.length > 0) {
+                res.render('front/paperlist', {
+                    title: topic[0].name + ' - 寿百年',
+                    file: topic[0],
+                    kind: '分类列表'
+                });
+            } else {
+                res.redirect('/'); 
+            }
+        });
     })
 
     // 前台历史

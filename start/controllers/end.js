@@ -49,28 +49,27 @@ module.exports = function (app) {
         });
     });
 
-    // 标签、分类管理页(未来需要拆分)
-    app.get('/end/tag', checkLogin);
-    app.get('/end/tag', function (req, res) {
+    // 标签、分类管理页(未来需要拆分,因为分类界面的侧边栏需要写在数据当中)
+    app.get('/end/tags', checkLogin);
+    app.get('/end/tags', function (req, res) {
         Tag.find({}).exec(function (err, tags) {
-             res.render('end/topictag', {
+             res.render('end/tags', {
                 layout: 'end',
                 title: '标签管理',
                 showPost: true,
-                differ: 'tag',
-                topictags: tags
+                tags: tags
             });       
         });
     });
-    app.get('/end/topic', checkLogin);
-    app.get('/end/topic', function (req, res) {
+    app.get('/end/topics', checkLogin);
+    app.get('/end/topics', function (req, res) {
         Topic.find({}).exec(function (err, topics) {
-            res.render('end/topictag', {
+        console.log(topics);
+            res.render('end/topics', {
                 layout: 'end',
                 title: '分类管理',
                 showPost: true,
-                differ: 'topic',
-                topictags: topics
+                topics: topics
             });
         });
     });
@@ -87,21 +86,29 @@ module.exports = function (app) {
     app.post('/end/topicadd', checkLogin);
     app.post('/end/topicadd', function (req, res) {
         var newTopic = new Topic({
-            name: req.body.name
+            name: req.body.name,
+            title: '右侧标题',
+            content: [
+                '测试测试测试测试测试测试1',
+                '测试测试测试测试测试测试2',
+                '测试测试测试测试测试测试3'
+            ]
         });
         newTopic.save();
         res.redirect('back');
     });
-    app.get('/end/ttdel/:id', function (req, res) {
-        console.log(req.params.id);
-        // 此处暂时将tag、topic的删除功能写在一起
+    app.get('/end/tagdel/:id', checkLogin);
+    app.get('/end/tagdel/:id', function (req, res) {
         Tag.remove({_id: req.params.id}, function (err, tt) {
             console.log('删除tag');
         });
+        res.redirect('back');
+    });
+    app.get('/end/topicdel/:id', checkLogin);
+    app.get('/end/topicdel/:id', function (req, res) {
         Topic.remove({_id: req.params.id}, function (err, tt) {
             console.log('删除topic');
         });
-
         res.redirect('back');
     });
 

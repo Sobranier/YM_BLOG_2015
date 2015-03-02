@@ -9,11 +9,19 @@
         <!--面板-->
         <h1 class="page-title">{{title}}</h1>
 
-        {{#each topictags}}
-        <button class="btn btn-inverse">{{name}}<a class="fui-cross" href="/end/ttdel/{{_id}}"></a></button>
+        {{#each topics}}
+        <div class="panel panel-default">
+            <div class="panel-heading">{{name}}<a class="fui-cross" href="/end/topicdel/{{_id}}"></a></div>
+            <div class="panel-body">
+                <h4>{{title}}</h4>
+                {{#each content}}
+                <p>{{this}}</p>
+                {{/each}}
+            </div>
+        </div>
         {{/each}}
 
-        <form method="post" action="/end/{{differ}}add">
+        <form method="post" action="/end/topicadd">
             <input name="name" type="text" class="form-control" placeholder="name" />
             <input class="btn btn-primary btn-lg btn-block" type="submit" value="添加"/>
         </form>
