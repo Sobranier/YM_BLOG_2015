@@ -61,18 +61,7 @@ module.exports = function (app) {
     });
 
     app.post('/posts/search', function (req, res) {
-        console.log(req.body);
-        console.log(req.body.title);
-
-        Blog.find({}).sort({'date':-1}).exec(function (err, blogs) {
-            for (var index in blogs) {
-                var date = blogs[index].date;
-                blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();
-                blogs[index].year = date.getFullYear();
-            }
-
-            res.json({posts: blogs});
-        });
+        getPaperList(res, req.body);
     });
 
     app.get('/posts/:alias', function (req, res) {
@@ -144,4 +133,30 @@ module.exports = function (app) {
         });
     });
 
+    // 获取文章列表的函数
+    function getPaperList (res, params) {
+        var pageNum = params.page ? params.page : 1;
+
+        Blog.count({}, function (err, total) {
+            Blog.find({}).sort({'date':-1}).skip(10*(pageNum-1)).limit(10).exec(function (err, blogs) {
+                for (var index in blogs) {
+                    var date = blogs[index].date;
+                    blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();
+                    blogs[index].year = date.getFullYear();
+                }
+                res.json({
+                    posts: blogs,
+                    page: {
+                        total: total,
+                        pageNum: pageNum,
+                        number: Math.ceil(total/10)
+                    }
+                });
+
+            });
+        });
+
+
+
+    }
 }
