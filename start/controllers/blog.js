@@ -23,23 +23,38 @@ module.exports = function (app) {
         newBlog.save();
         */
 
-        Blog.find({}).sort({'date':-1}).exec(function (err, blogs) {
-            for (var index in blogs) {
-                var date = blogs[index].date;
-                blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();
-                blogs[index].year = date.getFullYear();
-            }
-            res.render('home', {
-                title: 'YANWEIQING',
-                file: {
-                    name: '最近更新',
-                    content: [
-                        '测试测试测试1',
-                        '测试测试测试2',
-                        '测试测试测试3',
-                    ]
-                },
-                posts: blogs
+        var page = req.query.p ? parseInt(req.query.p) : 1;
+
+        Blog.count({}, function (err, total) {
+            Blog.find({}).sort({'date':-1}).skip(10*(page-1)).limit(10).exec(function (err, blogs) {
+                var notFirstPage = ((page - 1) != 0),
+                    notLastPage = (((page - 1) * 10 + blogs.length) != total),
+                    relatePage = {};
+                if (notFirstPage) {
+                    relatePage.notFirstPage = true;
+                }
+                if (notLastPage) {
+                    relatePage.notLastPage = true;
+                }
+                for (var index in blogs) {
+                    var date = blogs[index].date;
+                    blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();
+                    blogs[index].year = date.getFullYear();
+                }
+                res.render('home', {
+                    title: 'YANWEIQING',
+                    file: {
+                        name: '最近更新',
+                        title: '勿忘初衷',
+                        content: [
+                            '测试测试测试1',
+                            '测试测试测试2',
+                            '测试测试测试3',
+                        ]
+                    },
+                    posts: blogs,
+                    relatePage: relatePage
+                });
             });
         });
 
@@ -49,7 +64,7 @@ module.exports = function (app) {
         console.log(req.body);
         console.log(req.body.title);
 
-        Blog.find({}).exec(function (err, blogs) {
+        Blog.find({}).sort({'date':-1}).exec(function (err, blogs) {
             for (var index in blogs) {
                 var date = blogs[index].date;
                 blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();

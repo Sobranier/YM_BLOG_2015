@@ -12,15 +12,19 @@
             <span>
                 <i class="fa fa-files-o"></i>分类:
                 {{#each post.topics}}
-                <a href="/topics/{{name}}">{{name}}</a>
+                <a href="/topics/{{this}}">{{this}}</a>
                 {{/each}}
             </span>
             <span>
                 <i class="fa fa-tags"></i>标签:
                 {{#each post.tags}}
-                <a href="/tags/{{name}}">{{name}}</a>
+                <a href="/tags/{{this}}">{{this}}</a>
                 {{/each}}
             </span>
+        </div>
+        <div class="post-tag">
+            更早一篇<a href="/posts/??">上</a>
+            更新一篇<a href="/posts/??">下</a>
         </div>
     </div>
 </div>
