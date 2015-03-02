@@ -34,25 +34,27 @@ module.exports = function (app) {
         Blog.find({_id: req.params.id}).exec(function (err, blog) {
             Tag.find({}).exec(function (err, tags) {
                 Topic.find({}).exec(function (err, topics) {
-                    for (var i = 0; i < blog[0].tags.length; i ++) {
-                        for (var j = 0; j < tags.length; j ++) {
-                            if (tags[j].name == blog[0].tags[i]) {
-                                tags[j].selected = true;
-                                break;
+                    if (blog.length > 0) {
+                        for (var i = 0; i < blog[0].tags.length; i ++) {
+                            for (var j = 0; j < tags.length; j ++) {
+                                if (tags[j].name == blog[0].tags[i]) {
+                                    tags[j].selected = true;
+                                    break;
+                                }
                             }
                         }
-                    }
-                    for (var i = 0; i < blog[0].topics.length; i ++) {
-                        for (var j = 0; j < topics.length; j ++) {
-                            if (topics[j].name == blog[0].topics[i]) {
-                                topics[j].selected = true;
-                                break;
+                        for (var i = 0; i < blog[0].topics.length; i ++) {
+                            for (var j = 0; j < topics.length; j ++) {
+                                if (topics[j].name == blog[0].topics[i]) {
+                                    topics[j].selected = true;
+                                    break;
+                                }
                             }
                         }
-                    }
-                    
-                    if (blog[0].ifpublic) {
-                        blog[0].status = true;
+                        
+                        if (blog[0].ifpublic) {
+                            blog[0].status = true;
+                        }
                     }
 
                     res.render('end/post', {
