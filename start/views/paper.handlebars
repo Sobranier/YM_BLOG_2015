@@ -1,23 +1,25 @@
 <div class="row">
     <div class="col-md-12">
-        <h1 class="page-title"><span>TEST TITLE</span></h1>
-    </div>
-    <div class="col-md-12">
-        <pre style="height:300px;"></pre>
-    </div>
-    <div class="col-md-12">
+        <h1 class="page-title">{{post.title}}</h1>
+
+        <pre>{{post.content}}</pre>
+
         <div class="post-tag">
             <span>
+                <i class="fa fa-calendar-o"></i>
+                {{post.year}}-{{post.day}}
+            </span>
+            <span>
                 <i class="fa fa-files-o"></i>分类:
-                <a href="#">Javascript</a>
+                {{#each post.topics}}
+                <a href="/topics/{{name}}">{{name}}</a>
+                {{/each}}
             </span>
             <span>
                 <i class="fa fa-tags"></i>标签:
-                <a href="#">Javascript</a>
-                ,
-                <a href="#">HTML</a>
-                ,
-                <a href="#">TEST</a>
+                {{#each post.tags}}
+                <a href="/tags/{{name}}">{{name}}</a>
+                {{/each}}
             </span>
         </div>
     </div>

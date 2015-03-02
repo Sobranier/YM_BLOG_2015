@@ -7,10 +7,10 @@
     {{#each posts}}
     <div class="col-md-12 post-wrapper">
         <h2 class="post-title">
-            <a href="/post/{{_id}}" rel="阅读全文'{{title}}'">{{title}}</a>
+            <a href="/posts/{{alias}}" rel="浏览全文'{{title}}'">{{title}}</a>
         </h2>
         <div class="post-content">
-            <p>{{summary}}</p>
+            <p>{{summary}} <a class="btn btn-primary btn-xs" href="/posts/{{alias}}" rel="浏览全文'{{title}}'">浏览全文</a></p>
         </div>
         <div class="post-tag">
             <span><i class="fa fa-calendar-o"></i>{{year}}-{{day}}</span>
@@ -24,7 +24,6 @@
                 <i class="fa fa-tags"></i>标签:
                 {{#each tags}}
                 <a href="/tags/{{name}}">{{name}}</a>
-                 
                 {{/each}}
             </span>
         </div>
