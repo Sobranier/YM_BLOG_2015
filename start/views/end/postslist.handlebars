@@ -14,6 +14,7 @@
             </div>
             <div class="panel-body">
                 <form role="form" class="form-horizontal" id="form_search">
+                    <div><input type="text" class="hidden" name="page" value="1"/></div>
                     <div class="form-group col-sm-4">
                         <label class="control-label col-xs-3">标题</label>
                         <div class="col-xs-9">
@@ -46,8 +47,8 @@
                         <th>ID</th>
                         <th>标题</th>
                         <th>日期</th>
-                        <th>权限</th>
-                        <th>编辑</th>
+                        <th>公开</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody id="table_search">
@@ -55,34 +56,80 @@
             </table>
         </div>
 
+        <ul class="pagination-plain" id="table_pagination"></ul>
 
     </div>
 </div>
 
 <script>
-    $('#form_submit').click(function(event){
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+    $('#form_submit').bind('click', function(event){
         event.preventDefault();
-        console.log($('#form_search').serialize());
-        $.post('/posts/search', {},
+        updateTable($("form").serialize());
+    });
+
+    function updateTable (params) {
+        $.post('/posts/search',
+        params,
         function (data, status) {
             if (status == 'success') {
                 $('#table_search').empty();
                 for (var i = 0; i < data['posts'].length; i ++) {
                     var pos = data['posts'][i],
-                        ifpublic = ifpublic ? '公开' : '私人',
+                        checked = pos['ifpublic'] ? 'checked' : '',
                         tr ="<tr>" +
                             "   <td>" + pos['_id'] + "</td>" +
                             "   <td>" + pos['title'] + "</td>" +
                             "   <td>" + pos['date'] + "</td>" +
-                            "   <td>" + ifpublic + "<input type='checkbox' checked data-toggle='switch' data-on-color='primary' data-off-color='default'/>" + "</td>" +
-                            "   <td><a class='fa fa-pencil-square-o' href='/end/paperedit/" + pos['_id'] + "'></a></td>" +
+                            "   <td><input type='checkbox' " + checked + " data-toggle='switch' data-on-color='primary' data-off-color='default'/>" + "</td>" +
+                            "   <td><a class='fui-new' rel='编辑' href='/end/paperedit/" + pos['_id'] + "'>编</a><a class='fui-trash' data-url='/end/paperdel/" + pos['_id'] + "'>删</a></td>" +
                             "</tr>";
                     $('#table_search').append($(tr));
                 }
+                $('a.fui-trash').bind('click', function() {
+                    if (confirm('确认删除文章?')){
+                        console.log(1);
+                    }
+                });
+                $('input[type="checkbox"]').bootstrapSwitch();
+
+                createPagination(data.page);
             } else {
                 alert('数据加载失败');
             }
         });
-    });
+    }
+
+    function createPagination (page) {
+        $('#table_pagination').empty();
+        var pg = "<li class='previous'><a data-page='" + (page.pageNum-1) + "'>← Previous</a></li>";
+        for (var i = 0; i < page.number; i ++) {
+            pg += "<li><a data-page='" + (i+1) + "'>" + (i+1) + "<a></li>";
+        }
+        pg += "<li class='next'><a data-page='" + (page.pageNum-0+1) + "'>Newer →</a></li>";
+        $('#table_pagination').append($(pg));
+        $('#table_pagination').delegate('a','click',function(event){
+            event.preventDefault();
+            var params = $("form").serializeObject();
+            params.page = $(this).attr('data-page');
+            updateTable(params);
+        });
+    }
+
 </script>
 

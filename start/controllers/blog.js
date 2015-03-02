@@ -138,6 +138,10 @@ module.exports = function (app) {
         var pageNum = params.page ? params.page : 1;
 
         Blog.count({}, function (err, total) {
+            var number = Math.ceil(total/10);
+            pageNum = (pageNum < 1) ? 1 : pageNum;
+            pageNum = (pageNum > number) ? number : pageNum;
+
             Blog.find({}).sort({'date':-1}).skip(10*(pageNum-1)).limit(10).exec(function (err, blogs) {
                 for (var index in blogs) {
                     var date = blogs[index].date;
