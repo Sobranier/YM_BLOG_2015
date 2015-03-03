@@ -186,15 +186,7 @@ module.exports = function (app) {
     });
     app.post('/end/topicadd', checkLogin);
     app.post('/end/topicadd', function (req, res) {
-        var newTopic = new Topic({
-            name: req.body.name,
-            title: '右侧标题',
-            content: [
-                '测试测试测试测试测试测试1',
-                '测试测试测试测试测试测试2',
-                '测试测试测试测试测试测试3'
-            ]
-        });
+        var newTopic = new Topic(req.body);
         newTopic.save();
         res.redirect('back');
     });
