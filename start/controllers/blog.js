@@ -11,12 +11,12 @@ module.exports = function (app) {
     app.get('/', function(req, res) {
         /*
         var newBlog = new Blog({
-            title: '这还是一个测试0011',
+            title: '测试0018',
             date: new Date(),
             content: '本文记录了美团在推广webp的一方面实践，虽然本人负责主要的实施，但领导及同事们提供了很大的帮助，包括方案的讨论及选定和后期文章的审阅等等。本文除了大记录了如何实施，还分享了整个效果评估的方案，总的来说是对新技术的一些尝试。更多内容可以去http://fe.meituan.com观看。',
             summary: '这是测试的贱贱贱加加加加123',
-            alias: 'test0011',
-            topics: ['JavaScript', 'life0002'],
+            alias: 'test0018',
+            topics: ['JavaScript', 'life0003'],
             tags: ['Html', 'JavaScript', 'Node', '前端', 'life0002'],
             ifpublic: true
         });
@@ -135,14 +135,15 @@ module.exports = function (app) {
 
     // 获取文章列表的函数
     function getPaperList (res, params) {
-        var pageNum = params.page ? params.page : 1;
+        var pageNum = params.page ? params.page : 1,
+            re = new RegExp(params.title, 'i');
 
-        Blog.count({}, function (err, total) {
+        Blog.count({'ifpublic': params.ifpublic, 'title': {$regex: re}}, function (err, total) {
             var number = Math.ceil(total/10);
             pageNum = (pageNum < 1) ? 1 : pageNum;
             pageNum = (pageNum > number) ? number : pageNum;
 
-            Blog.find({}).sort({'date':-1}).skip(10*(pageNum-1)).limit(10).exec(function (err, blogs) {
+            Blog.find({'ifpublic': params.ifpublic, 'title': {$regex: re}}).sort({'date':-1}).skip(10*(pageNum-1)).limit(10).exec(function (err, blogs) {
                 for (var index in blogs) {
                     var date = blogs[index].date;
                     blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();

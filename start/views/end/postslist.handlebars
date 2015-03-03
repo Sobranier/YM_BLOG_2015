@@ -25,7 +25,7 @@
                     <div class="form-group col-sm-4">
                         <label class="control-label col-xs-3">权限</label>
                         <div class="col-xs-9">
-                            <select name="ifpublic" class="form-control">
+                            <select name="ifpublic" class="form-control select select-primary select-block mbl">
                                 <option value="1">公开</option>
                                 <option value="0">私人</option>
                             </select>
@@ -82,6 +82,15 @@
         event.preventDefault();
         updateTable($("form").serialize());
     });
+    $('#table_pagination').delegate('a','click',function(event){
+        event.preventDefault();
+        var params = $("form").serializeObject();
+        params.page = $(this).attr('data-page');
+        updateTable(params);
+    });
+
+
+    $("select").select2({dropdownCssClass: 'dropdown-inverse'});
 
     function updateTable (params) {
         $.post('/posts/search',
@@ -123,12 +132,6 @@
         }
         pg += "<li class='next'><a data-page='" + (page.pageNum-0+1) + "'>Newer →</a></li>";
         $('#table_pagination').append($(pg));
-        $('#table_pagination').delegate('a','click',function(event){
-            event.preventDefault();
-            var params = $("form").serializeObject();
-            params.page = $(this).attr('data-page');
-            updateTable(params);
-        });
     }
 
 </script>
