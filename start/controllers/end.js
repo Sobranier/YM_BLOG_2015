@@ -69,6 +69,13 @@ module.exports = function (app) {
             });
         });
     });
+    app.get('/end/preview/:alias?', checkLogin);
+    app.get('/end/preview/:alias?', function (req, res) {
+      res.render('end/dashboard', {
+          layout: 'end',
+          title: '预览界面'
+      });
+    });
     // 删除文章功能需求待定,可能不需要删除功能，如果真的添加，需要保障安全机制
 
 
@@ -81,6 +88,40 @@ module.exports = function (app) {
             blog.save();
         });
     });
+    app.post('/end/editBlog', checkLogin);
+    app.post('/end/editBlog', function (req, res) {
+        var params = req.body,
+            id = params.id;
+        params.ifpublic = (params.ifpublic == 1) ? true : false;
+        var newBlog = new Blog({
+            title: params.title,
+            date: params.date,
+            content: params.content,
+            summary: params.summary,
+            alias: params.alias,
+            topics: params.topics,
+            tags: params.tags,
+            ifpublic: params.ifpublic
+        });
+        if (id != '') {
+            Blog.findOne({_id: id}).exec(function (err, blog) {
+                // 有待优化，写这么丑你女朋友们知道么
+                blog.set({title: params.title});
+                blog.set({date: params.date});
+                blog.set({content: params.content});
+                blog.set({summary: params.summary});
+                blog.set({alias: params.alias});
+                blog.set({topics: params.topics});
+                blog.set({tags: params.tags});
+                blog.set({ifpublic: params.ifpublic});
+                blog.save()
+            });
+        } else {
+            newBlog.save();
+        }
+        res.redirect('/end/preview/' + params.alias);
+    });
+
 
     // 标签、分类管理页(未来需要拆分,因为分类界面的侧边栏需要写在数据当中)
     app.get('/end/tags', checkLogin);
@@ -181,9 +222,9 @@ module.exports = function (app) {
     });
 
     function checkLogin (req, res, next) {
-        console.log("检验是否在线——" + req.session.user);
+        console.log("检验是否在线————在线账号:" + req.session.user);
         if (!req.session.user) {
-            console.log('未检测到在线');
+            console.log('未检测到在线!!!');
             res.redirect('/login');
         } else {
             next();

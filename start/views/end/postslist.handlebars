@@ -62,21 +62,6 @@
 </div>
 
 <script>
-    $.fn.serializeObject = function () {
-        var o = {};
-        var a = this.serializeArray();
-        $.each(a, function() {
-            if (o[this.name] !== undefined) {
-                if (!o[this.name].push) {
-                    o[this.name] = [o[this.name]];
-                }
-                o[this.name].push(this.value || '');
-            } else {
-                o[this.name] = this.value || '';
-            }
-        });
-        return o;
-    };
 
     $('#form_submit').bind('click', function(event){
         event.preventDefault();
@@ -89,7 +74,6 @@
         params.page = $(this).attr('data-page');
         updateTable(params);
     });
-
 
     $("select").select2({dropdownCssClass: 'dropdown-inverse'});
 
@@ -147,7 +131,6 @@
             }
         });
     };
-
 
     function createPagination (page) {
         $('#table_pagination').empty();

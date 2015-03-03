@@ -20,7 +20,8 @@
                     <div class="form-group col-sm-6">
                         <label class="control-label col-xs-2">ID</label>
                         <div class="col-xs-10">
-                            <input type="text" name="id" class="form-control" disabled="true" value="{{post._id}}"/>
+                            <input type="text" class="form-control" disabled value="{{post._id}}"/>
+                            <input type="text" name="id" class="hidden" value="{{post._id}}"/>
                         </div>
                     </div>
 
@@ -78,10 +79,8 @@
                         </div>
                     </div>
                     <div class="col-sm-5 col-sm-offset-1">
-                        <button class="btn btn-default btn-block" id="form_submit">提交</button>
-                        
+                        <button class="btn btn-primary btn-block" id="form_submit">提交</button>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -91,16 +90,20 @@
 <script>
     $('#form_submit').click(function(event){
         event.preventDefault();
-        console.log($('#form_post').serialize());
-        $.post('/posts/edit', {},
-        function (data, status) {
-            if (status == 'success') {
-                console.log(12);
-
-            } else {
-                alert('数据加载失败');
-            }
-        });
+        var params = $('form').serializeObject();
+        if (params.title == '' || params.content == '' || params.alias == '' || params.date == '' || params.summary == '') {
+            alert('有必填项目没有填写');
+        } else {
+            $.post('/end/editBlog',
+            params,
+            function (data, status) {
+                if (status == 'success') {
+                    window.location.href='/end/preview';
+                } else {
+                    alert('数据加载失败');
+                }
+            });     
+        }
     });
     $("select").select2({dropdownCssClass: 'dropdown-inverse'});
 </script>

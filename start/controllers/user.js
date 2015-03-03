@@ -67,7 +67,7 @@ module.exports = function (app) {
     function checkNotLogin (req, res, next) {
         console.log("检验是否不在线——" + req.session.user);
         if (req.session.user) {
-            console.log('检测到登陆——' + req.session.user);
+            console.log('检测到登陆————在线账号:' + req.session.user);
             // 这里的导向待定 
             res.redirect('/end');
         } else {
