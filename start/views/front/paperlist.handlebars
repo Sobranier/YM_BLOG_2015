@@ -1,6 +1,42 @@
 <div class="row">
     <div class="col-md-12">
-        <h1 class="page-title">{{kind}} {{file.name}}</h1>
+        {{#if kind}}<h1 class="page-title">{{kind}} {{file.name}}</h1>{{/if}}
+
+        {{#each posts}}
+        <div class="post-wrapper">
+            <h2 class="post-title">
+                <a href="/posts/{{alias}}" rel="浏览全文'{{title}}'">{{title}}</a>
+            </h2>
+            <div class="post-content">
+                <p>{{summary}} <a class="btn btn-primary btn-xs" href="/posts/{{alias}}" rel="浏览全文'{{title}}'">浏览全文</a></p>
+            </div>
+            <div class="post-tag">
+                <span><i class="fa fa-calendar-o"></i>{{year}}-{{day}}</span>
+                <span>
+                    <i class="fa fa-files-o"></i>分类:
+                    {{#each topics}}
+                    <a href="/topics/{{this}}">{{this}}</a>
+                    {{/each}}
+                </span>
+                <span>
+                    <i class="fa fa-tags"></i>标签:
+                    {{#each tags}}
+                    <a href="/tags/{{this}}">{{this}}</a>
+                    {{/each}}
+                </span>
+            </div>
+        </div>
+        {{/each}}
+
+        {{notFirstPage}}
+        {{notLastPage}}
+        {{#if relatePage.notFirstPage}}
+            <a href="/blog?page=1">上一页</a>
+        {{/if}}
+
+        {{#if relatePage.notLastPage}}
+            <a href="/blog?page=2">下一页</a>
+        {{/if}}
+
     </div>
 </div>
-
