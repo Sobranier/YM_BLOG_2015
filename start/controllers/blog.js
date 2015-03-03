@@ -18,7 +18,8 @@ module.exports = function (app) {
             alias: 'test0018',
             topics: ['JavaScript', 'life0003'],
             tags: ['Html', 'JavaScript', 'Node', '前端', 'life0002'],
-            ifpublic: true
+            ifpublic: true,
+            ifsafe: true
         });
         newBlog.save();
         */

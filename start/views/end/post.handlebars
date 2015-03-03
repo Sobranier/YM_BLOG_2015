@@ -78,6 +78,15 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-xs-2">安全</label>
+                        <div class="col-xs-10">
+                            <select name="ifsafe" class="form-control select select-primary select-block mbl" />
+                                <option value="1">保护</option>
+                                <option value="0" {{#if post.safestatus}}selected{{/if}}>解保</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-sm-5 col-sm-offset-1">
                         <button class="btn btn-primary btn-block" id="form_submit">提交</button>
                     </div>
@@ -98,7 +107,7 @@
             params,
             function (data, status) {
                 if (status == 'success') {
-                    window.location.href='/end/preview';
+                    location.href='/end/preview/' + data.alias;
                 } else {
                     alert('数据加载失败');
                 }

@@ -11,6 +11,7 @@ var blogSchema = new Schema({
     topics: Array,
     tags: Array,
     ifpublic: Boolean,
+    ifsafe: Boolean,
 },{
     collection: 'blog'
 });

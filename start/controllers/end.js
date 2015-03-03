@@ -55,6 +55,10 @@ module.exports = function (app) {
                         if (blog.ifpublic) {
                             blog.status = true;
                         }
+                        console.log(blog.ifsafe);
+                        if (!blog.ifsafe) {
+                            blog.safestatus = true;
+                        }
                     }
 
                     res.render('end/post', {
@@ -76,8 +80,25 @@ module.exports = function (app) {
           title: '预览界面'
       });
     });
-    // 删除文章功能需求待定,可能不需要删除功能，如果真的添加，需要保障安全机制
 
+    // 删除文章是比较严重的操作，前后端都需要再三验证
+    app.post('/end/delBlog/:id', checkLogin);
+    app.post('/end/delBlog/:id', function (req, res) {
+        Blog.findOne({_id: req.params.id}).exec(function (err, blog) {
+            if (!blog.ifsafe) {
+                blog.remove();
+                res.json({
+                    success: true,
+                    ret: '删除成功'
+                });
+            } else {
+                res.json({
+                    success: false,
+                    ret: '保护锁定对象不能被删除'
+                });
+            }
+        });
+    });
 
     // 更新文章状态
     app.post('/end/updateBlogStatus', checkLogin);
@@ -93,6 +114,7 @@ module.exports = function (app) {
         var params = req.body,
             id = params.id;
         params.ifpublic = (params.ifpublic == 1) ? true : false;
+        params.ifsafe = (params.ifsafe == 1) ? true : false;
         var newBlog = new Blog({
             title: params.title,
             date: params.date,
@@ -101,7 +123,8 @@ module.exports = function (app) {
             alias: params.alias,
             topics: params.topics,
             tags: params.tags,
-            ifpublic: params.ifpublic
+            ifpublic: params.ifpublic,
+            ifsafe: params.ifsafe
         });
         if (id != '') {
             Blog.findOne({_id: id}).exec(function (err, blog) {
@@ -114,12 +137,16 @@ module.exports = function (app) {
                 blog.set({topics: params.topics});
                 blog.set({tags: params.tags});
                 blog.set({ifpublic: params.ifpublic});
+                blog.set({ifsafe: params.ifsafe});
                 blog.save()
             });
         } else {
             newBlog.save();
         }
-        res.redirect('/end/preview/' + params.alias);
+        res.json({
+            alias: params.alias
+        });
+        //res.redirect('/end/preview/' + params.alias);
     });
 
 

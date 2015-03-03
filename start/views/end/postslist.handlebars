@@ -48,6 +48,7 @@
                         <th>标题</th>
                         <th>日期</th>
                         <th>公开</th>
+                        <th>安全锁定</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -85,19 +86,21 @@
                 $('#table_search').empty();
                 for (var i = 0; i < data['posts'].length; i ++) {
                     var pos = data['posts'][i],
-                        checked = pos['ifpublic'] ? 'checked' : '',
+                        statuschecked = pos['ifpublic'] ? 'checked' : '',
+                        safechecked = pos['ifsafe'] ? 'checked' : '',
                         tr ="<tr>" +
                             "   <td>" + pos['_id'] + "</td>" +
                             "   <td>" + pos['title'] + "</td>" +
                             "   <td>" + pos['date'] + "</td>" +
-                            "   <td><input type='checkbox' " + checked + " data-toggle='switch' data-on-color='primary' data-off-color='default' data-id='" + pos['_id'] + "'/>" + "</td>" +
-                            "   <td><a class='fui-new' rel='编辑' href='/end/paperedit/" + pos['_id'] + "'>编</a><a class='fui-trash' data-url='/end/paperdel/" + pos['_id'] + "'>删</a></td>" +
+                            "   <td><input class='J-switch' type='checkbox' " + statuschecked + " data-toggle='switch' data-on-color='primary' data-off-color='default' data-id='" + pos['_id'] + "'/>" + "</td>" +
+                            "   <td><input type='checkbox' " + safechecked + " disabled data-toggle='switch'/></td>" +
+                            "   <td><a class='fui-new' rel='编辑' href='/end/paperedit/" + pos['_id'] + "'>编</a><a class='fui-trash' data-url='/end/delBlog/" + pos['_id'] + "'>删</a></td>" +
                             "</tr>";
                     $('#table_search').append($(tr));
                 }
                 $('a.fui-trash').bind('click', function () {
                     if (confirm('确认删除文章?')){
-                        console.log(1);
+                        delBlog($(this));
                     }
                 });
                 $('input[type="checkbox"]').bootstrapSwitch();
@@ -112,26 +115,42 @@
         });
     }
 
-    function updateSwitch (node) {
-        /*
-        switch (node.hasClass('bootstrap-switch-on')) {
-            case false:
-                var status = 0;
-                break;
-            case true:
-                var status = 1;
-        }*/
-        $.post('/end/updateBlogStatus', {
-            id: node.find('input[type="checkbox"]').attr('data-id'),
-            status: node.hasClass('bootstrap-switch-on')
-        }, function (data, status) {
+    // 删除文章
+    function delBlog (node) {
+        $.post(node.attr('data-url'),
+        {},
+        function (data, status) {
             if (status == 'success') {
+                if (!data.success) {
+                    alert(data.ret);
+                } else {
+                    console.log(data.ret);
+                    node.parent().parent('tr').remove();
+                }
             } else {
                 alert('数据操作失败');
             }
+            
         });
+    }
+
+    // switch切换
+    function updateSwitch (node) {
+        var target = node.find('input.J-switch');
+        if (target.length > 0) {
+            $.post('/end/updateBlogStatus', {
+                id: target.attr('data-id'),
+                status: node.hasClass('bootstrap-switch-on')
+            }, function (data, status) {
+                if (status == 'success') {
+                } else {
+                    alert('数据操作失败');
+                }
+            });
+        }
     };
 
+    // 制作分页
     function createPagination (page) {
         $('#table_pagination').empty();
         var pg = "<li class='previous'><a data-page='" + (page.pageNum-1) + "'>← Previous</a></li>";
