@@ -31,11 +31,11 @@
         {{notFirstPage}}
         {{notLastPage}}
         {{#if relatePage.notFirstPage}}
-            <a href="/blog?page=1">上一页</a>
+            <a href="/blog?page={{relatePage.prePage}}">上一页</a>
         {{/if}}
 
         {{#if relatePage.notLastPage}}
-            <a href="/blog?page=2">下一页</a>
+            <a href="/blog?page={{relatePage.nextPage}}">下一页</a>
         {{/if}}
 
     </div>

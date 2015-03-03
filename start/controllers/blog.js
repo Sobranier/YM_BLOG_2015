@@ -11,6 +11,11 @@ module.exports = function (app) {
     app.get('/', function(req, res) {
         Blog.count({}, function (err, total) {
             Blog.find({}).sort({'date':-1}).limit(3).exec(function (err, blogs) {
+                for (var index in blogs) {
+                    var date = blogs[index].date;
+                    blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();
+                    blogs[index].year = date.getFullYear();
+                }
                 res.render('home', {
                     title: 'YANWEIQING',
                     file: {
@@ -99,15 +104,55 @@ module.exports = function (app) {
         });
     })
 
+    app.get('/archives/:year/:month/:day?', function (req, res) {
+        var year = req.params.year,
+            month = req.params.month,
+            day = req.params.day;
+        
+        if (day) {
+            var st = new Date(year, month-1, day),
+                et = new Date(year, month-1, day);
+            et.setDate(et.getDate() + 1);
+        } else {
+            var st = new Date(year, month-1, 1);
+            if (month == 11) {
+                var et = new Date(year+1, 0, 1);
+            } else {
+                var et = new Date(year, month, 1);
+            }
+        }
+        var params = {
+            page: req.query.page ? parseInt(req.query.page) : 1,
+            ifpublic: true,
+            time: {
+                st: st,
+                et: et
+            },
+            data: {
+                title: '时间分类' + ' - 寿百年',
+                file: {
+                    title: '时间测试',
+                    content: [
+                        '你好吗1',
+                        '你妹1',
+                        '2你'
+                    ]
+                },
+                kind: '文章时间'
+            }
+        }
+        getPaperList(res, params, false);
+    });
+
     // 单个文章界面（可以和后台preview界面做一些联系）
-    app.get('/posts/:alias', function (req, res) {
-        Blog.find({alias: req.params.alias}).exec(function (err, blogs) {
-            var date = blogs[0].date;
-            blogs[0].day = (date.getMonth() + 1) + "-" + date.getDate();
-            blogs[0].year = date.getFullYear();
+    app.get('/blog/:alias', function (req, res) {
+        Blog.findOne({alias: req.params.alias}).exec(function (err, blog) {
+            var date = blog.date;
+            blog.day = (date.getMonth() + 1) + "-" + date.getDate();
+            blog.year = date.getFullYear();
             res.render('front/paper', {
-                title: blogs[0].title,
-                post: blogs[0]
+                title: blog.title,
+                post: blog
             });
         });
     });
@@ -132,8 +177,10 @@ module.exports = function (app) {
         });
     });
 
+
+
     // 前台历史
-    app.get('/archives', function (req, res) {
+    app.get('/archives/?:year', function (req, res) {
         res.render('front/archives', {
             title: '文章存档'
         });
@@ -154,6 +201,9 @@ module.exports = function (app) {
         }
         if (params.topic) {
             config.topics = params.topic;
+        }
+        if (params.time) {
+            config.date = {$gte: params.time.st, $lt: params.time.et};
         }
         console.log(config);
 
@@ -186,9 +236,11 @@ module.exports = function (app) {
                         relatePage = {};
                     if (notFirstPage) {
                         relatePage.notFirstPage = true;
+                        relatePage.prePage = pageNum - 1;
                     }
                     if (notLastPage) {
                         relatePage.notLastPage = true;
+                        relatePage.nextPage = pageNum + 1;
                     }
                 
                     params.data.posts = blogs;
