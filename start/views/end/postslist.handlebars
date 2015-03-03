@@ -82,6 +82,7 @@
         event.preventDefault();
         updateTable($("form").serialize());
     });
+
     $('#table_pagination').delegate('a','click',function(event){
         event.preventDefault();
         var params = $("form").serializeObject();
@@ -105,17 +106,20 @@
                             "   <td>" + pos['_id'] + "</td>" +
                             "   <td>" + pos['title'] + "</td>" +
                             "   <td>" + pos['date'] + "</td>" +
-                            "   <td><input type='checkbox' " + checked + " data-toggle='switch' data-on-color='primary' data-off-color='default'/>" + "</td>" +
+                            "   <td><input type='checkbox' " + checked + " data-toggle='switch' data-on-color='primary' data-off-color='default' data-id='" + pos['_id'] + "'/>" + "</td>" +
                             "   <td><a class='fui-new' rel='编辑' href='/end/paperedit/" + pos['_id'] + "'>编</a><a class='fui-trash' data-url='/end/paperdel/" + pos['_id'] + "'>删</a></td>" +
                             "</tr>";
                     $('#table_search').append($(tr));
                 }
-                $('a.fui-trash').bind('click', function() {
+                $('a.fui-trash').bind('click', function () {
                     if (confirm('确认删除文章?')){
                         console.log(1);
                     }
                 });
                 $('input[type="checkbox"]').bootstrapSwitch();
+                $('.bootstrap-switch').bind('click', function () {
+                    updateSwitch($(this));
+                });
 
                 createPagination(data.page);
             } else {
@@ -123,6 +127,27 @@
             }
         });
     }
+
+    function updateSwitch (node) {
+        /*
+        switch (node.hasClass('bootstrap-switch-on')) {
+            case false:
+                var status = 0;
+                break;
+            case true:
+                var status = 1;
+        }*/
+        $.post('/end/updateBlogStatus', {
+            id: node.find('input[type="checkbox"]').attr('data-id'),
+            status: node.hasClass('bootstrap-switch-on')
+        }, function (data, status) {
+            if (status == 'success') {
+            } else {
+                alert('数据操作失败');
+            }
+        });
+    };
+
 
     function createPagination (page) {
         $('#table_pagination').empty();

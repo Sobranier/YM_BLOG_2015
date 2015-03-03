@@ -31,29 +31,29 @@ module.exports = function (app) {
     // 修改页
     app.get('/end/paperedit/:id?', checkLogin);
     app.get('/end/paperedit/:id?', function (req, res) {
-        Blog.find({_id: req.params.id}).exec(function (err, blog) {
+        Blog.findOne({_id: req.params.id}).exec(function (err, blog) {
             Tag.find({}).exec(function (err, tags) {
                 Topic.find({}).exec(function (err, topics) {
-                    if (blog.length > 0) {
-                        for (var i = 0; i < blog[0].tags.length; i ++) {
+                    if (blog) {
+                        for (var i = 0; i < blog.tags.length; i ++) {
                             for (var j = 0; j < tags.length; j ++) {
-                                if (tags[j].name == blog[0].tags[i]) {
+                                if (tags[j].name == blog.tags[i]) {
                                     tags[j].selected = true;
                                     break;
                                 }
                             }
                         }
-                        for (var i = 0; i < blog[0].topics.length; i ++) {
+                        for (var i = 0; i < blog.topics.length; i ++) {
                             for (var j = 0; j < topics.length; j ++) {
-                                if (topics[j].name == blog[0].topics[i]) {
+                                if (topics[j].name == blog.topics[i]) {
                                     topics[j].selected = true;
                                     break;
                                 }
                             }
                         }
                         
-                        if (blog[0].ifpublic) {
-                            blog[0].status = true;
+                        if (blog.ifpublic) {
+                            blog.status = true;
                         }
                     }
 
@@ -63,13 +63,24 @@ module.exports = function (app) {
                         showPost: true,
                         tags: tags,
                         topics: topics,
-                        post: blog[0]
+                        post: blog
                     });               
                 });
             });
         });
     });
     // 删除文章功能需求待定,可能不需要删除功能，如果真的添加，需要保障安全机制
+
+
+    // 更新文章状态
+    app.post('/end/updateBlogStatus', checkLogin);
+    app.post('/end/updateBlogStatus', function (req, res) {
+        console.log(req.body);
+        Blog.findOne({_id: req.body.id}).exec(function (err, blog) {
+            blog.set({ifpublic: req.body.status});
+            blog.save();
+        });
+    });
 
     // 标签、分类管理页(未来需要拆分,因为分类界面的侧边栏需要写在数据当中)
     app.get('/end/tags', checkLogin);
