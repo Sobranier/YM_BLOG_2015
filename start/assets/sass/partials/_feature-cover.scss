@@ -1,5 +1,5 @@
 .feature-cover {
-    position: fixed;right: 0;top: 0;
+    position: fixed;left: 0;top: 0;
     width:220px;height:100%;
     background-color: #eee;background-repeat: no-repeat;background-position: center;background-size: cover;
     background-image:url('../images/bg/mountain.png');
@@ -15,5 +15,10 @@
         .feature-cover-content {
             margin-top:60px;margin-left:10px;
         }
+    }
+}
+@media (max-width: 979px) {
+    .feature-cover {
+        display:none;
     }
 }

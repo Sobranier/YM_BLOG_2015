@@ -1,6 +1,5 @@
 .wq-navbar-box.navbar {
-    position: fixed;right: 0;top: 0;
-    width: 66px;height: 100%;
+    height: 100%;
     border-color: transparent;
     background-color: transparent;
     z-index: 100;
@@ -31,15 +30,15 @@
 
             }
             ul.dropdown-menu {
-                top:-40px;left:-168px;
-                margin-right:10px;
+                top:-40px;left:44px;
+                margin-left:10px;
                 z-index: 1000;
                 width:160px;
                 &:before {
                     content:'';position:absolute;
-                    top:50px;right:-20px;
+                    top:50px;left:-20px;
                     border:10px solid transparent;
-                    border-left-color: white;
+                    border-right-color: #f3f4f5;
                 }
                 a {
                     position:relative;
@@ -47,11 +46,11 @@
                     &:hover {
                         &:before {
                             content:'{';position:absolute;
-                            top:0;left:15px;
+                            top:7px;left:15px;
                         }
                         &:after {
                             content:'}';position:absolute;
-                            top:0;right:15px;
+                            top:7px;right:15px;
                         }
                         background-color:white;
                     }
@@ -66,5 +65,40 @@
     .navbar-collapse {
         position:absolute;
         bottom:10px;right:0;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .wq-navbar-box.navbar{
+        position: fixed;left: 0;top: 0;
+        width: 66px;
+        .collapse {
+            display:block;
+            visibility:visible;
+        }
+    }
+    .navbar-subheader {
+        display:none;
+    }
+}
+@media (max-width: 767px) {
+    .wq-navbar-box.navbar{
+        ul.dropdown-menu {
+            display:none;
+        }
+        .navbar-header {
+            background-color: lighten($col-logo, 10%);
+            .navbar-nav {
+                li.menu-item:hover {
+                    ul.dropdown-menu {
+                        display:none;
+                    }
+                }
+                a {
+                    color: darken($col-logo, 10%);
+                }
+            }
+        }
     }
 }
