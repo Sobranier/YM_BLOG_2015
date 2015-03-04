@@ -1,23 +1,27 @@
-<div class="login" style="width:940px;margin:0 auto;">
-    <div class="login-screen">
-        <div class="login-icon">
-            <img src="/stylesheets/img/login/Compas.png" alt="Welcome">
-            <h4>Welcome <small>Yan Weiqing</small></h4>
+<div class="row">
+    <div class="col-md-12">
+        <div class="login">
+            <div class="login-screen">
+                <div class="login-icon">
+                    <img src="/stylesheets/img/login/Compas.png" alt="Welcome">
+                    <h4>Welcome <small>Yan Weiqing</small></h4>
+                </div>
+
+                <form class="login-form" action="/login" method="post">
+                    <div class="form-group">
+                        <input type="text" name="account" class="form-control login-field" value="{{loginname}}" placeholder="Enter your name">
+                        <label class="login-field-icon fui-user" for="login-name"></label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control login-field" value="" placeholder="Password">
+                        <label class="login-field-icon fui-lock" for="login-pass"></label>
+                    </div>
+
+                    <input class="btn btn-primary btn-lg btn-block" type="submit"/>
+                </form>
+            </div>
         </div>
-
-        <form class="login-form" action="/login" method="post">
-            <div class="form-group">
-                <input type="text" name="account" class="form-control login-field" value="{{loginname}}" placeholder="Enter your name">
-                <label class="login-field-icon fui-user" for="login-name"></label>
-            </div>
-
-            <div class="form-group">
-                <input type="password" name="password" class="form-control login-field" value="" placeholder="Password">
-                <label class="login-field-icon fui-lock" for="login-pass"></label>
-            </div>
-
-            <input class="btn btn-primary btn-lg btn-block" type="submit"/>
-        </form>
     </div>
 </div>
 

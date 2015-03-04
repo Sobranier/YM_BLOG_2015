@@ -31,7 +31,6 @@ module.exports = function (app) {
                 });
             });
         });
-
     });
 
     // 搜索
@@ -43,6 +42,7 @@ module.exports = function (app) {
     app.get('/blog', function (req, res) {
         var params = {
             page: req.query.page ? parseInt(req.query.page) : 1,
+            action: '/blog/',
             ifpublic: true,
             data: {
                 title: '日志 - 寿百年',
@@ -65,6 +65,7 @@ module.exports = function (app) {
         var params = {
             page: req.query.page ? parseInt(req.query.page) : 1,
             tag: req.params.tag,
+            action: '/tags/' + req.params.tag,
             ifpublic: true,
             data: {
                 title: req.params.tag + ' - 寿百年',
@@ -89,6 +90,7 @@ module.exports = function (app) {
                 var params = {
                     page: req.query.page ? parseInt(req.query.page) : 1,
                     topic: req.params.topic,
+                    action: '/topics/' + req.params.topic,
                     ifpublic: true,
                     data: {
                         title: topic.name + ' - 寿百年',
@@ -111,10 +113,12 @@ module.exports = function (app) {
         
         if (day) {
             var st = new Date(year, month-1, day),
-                et = new Date(year, month-1, day);
+                et = new Date(year, month-1, day),
+                action = '/archives/' + year + '/' + month + '/' + day;
             et.setDate(et.getDate() + 1);
         } else {
-            var st = new Date(year, month-1, 1);
+            var st = new Date(year, month-1, 1),
+                action = '/archives/' + year + '/' + month;
             if (month == 11) {
                 var et = new Date(year+1, 0, 1);
             } else {
@@ -123,6 +127,7 @@ module.exports = function (app) {
         }
         var params = {
             page: req.query.page ? parseInt(req.query.page) : 1,
+            action: action,
             ifpublic: true,
             time: {
                 st: st,
@@ -178,13 +183,19 @@ module.exports = function (app) {
         });
     });
 
-
-
     // 前台历史
-    app.get('/archives/?:year', function (req, res) {
-        res.render('front/archives', {
-            title: '文章存档'
-        });
+    app.get('/archives/:year?', function (req, res) {
+        var year = req.params.year;
+        if (year) {
+            res.render('front/archives', {
+                title: '文章存档' + year
+            });
+        } else {
+            res.render('pages/archives', {
+                title: '文章存档'
+            });
+        }
+
     });
 
     // 获取文章列表的函数
@@ -206,7 +217,6 @@ module.exports = function (app) {
         if (params.time) {
             config.date = {$gte: params.time.st, $lt: params.time.et};
         }
-        console.log(config);
 
         Blog.count(config, function (err, total) {
             // 保障页码合法性
@@ -232,9 +242,10 @@ module.exports = function (app) {
                         }
                     });
                 } else {
-                    var notFirstPage = ((pageNum - 1) != 0),
-                        notLastPage = (pageNum != number),
+                    var notFirstPage = (pageNum > 1),
+                        notLastPage = (pageNum < number),
                         relatePage = {};
+                    relatePage.action = params.action;
                     if (notFirstPage) {
                         relatePage.notFirstPage = true;
                         relatePage.prePage = pageNum - 1;
