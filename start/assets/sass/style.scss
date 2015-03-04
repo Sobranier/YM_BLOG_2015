@@ -1,8 +1,7 @@
+@import "modules/basic";
 @import "modules/base-color";
 
-
 @import "sprite/test/index";
-
 
 @import "partials/header";
 @import "partials/feature-cover";
@@ -10,15 +9,6 @@
 @import "partials/footer";
 
 
-
-.fl {
-    float:left;
-}
-.fr {
-    float:right;
-}
-
 h1{
-    color:blue;
     //@include test-sprite(icon_tel);
 }

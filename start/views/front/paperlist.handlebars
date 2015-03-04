@@ -28,15 +28,14 @@
         </div>
         {{/each}}
 
-        {{notFirstPage}}
-        {{notLastPage}}
-        {{#if relatePage.notFirstPage}}
-            <a href="/blog?page={{relatePage.prePage}}">上一页</a>
-        {{/if}}
+        <div class="post-pagination clearfix">
+            {{#if relatePage.notFirstPage}}
+                <a href="/blog?page={{relatePage.prePage}}" class="btn btn-primary btn-xs fl wq-ml-10"><span class="fui-triangle-up-small"></span>更新的文章</a>
+            {{/if}}
 
-        {{#if relatePage.notLastPage}}
-            <a href="/blog?page={{relatePage.nextPage}}">下一页</a>
-        {{/if}}
-
+            {{#if relatePage.notLastPage}}
+                <a href="/blog?page={{relatePage.nextPage}}" class="btn btn-primary btn-xs fr wq-mr-10">之前的文章<span class="fui-triangle-down-small"></span></a>
+            {{/if}}
+        </div>
     </div>
 </div>

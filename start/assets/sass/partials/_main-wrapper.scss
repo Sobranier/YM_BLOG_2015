@@ -1,6 +1,8 @@
 
 .main-wrapper.container-fluid {
     h1.page-title {
+        padding-bottom:4px;
+        border-bottom:1px solid #cacaca;
         color:#999;
         font-size:20px;
     }
@@ -19,11 +21,20 @@
         margin-left:66px;
     }
 }
+@media (min-width: 768px) {
+    .boot-wrapper.container-fluid {
+        margin-left:66px;
+    }
+}
 @media (max-width: 767px) {
     .main-wrapper.container-fluid {
         margin-left:0;
     }
+    .boot-wrapper.container-fluid {
+        margin-left:0;
+    }
 }
+
 
 .post-wrapper {
     padding-top:20px;
@@ -47,5 +58,8 @@
             margin-right:4px;
         }
     }
-
+}
+.post-pagination {
+    padding-top:20px;
+    padding-bottom:30px;
 }

@@ -1,0 +1,17 @@
+.fl {
+    float:left;
+}
+.fr {
+    float:right;
+}
+
+@for $i from 0 through 20 {
+    .wq-pt-#{$i*5}{padding-top:5px * $i;}
+    .wq-pl-#{$i*5}{padding-left:5px * $i;}
+    .wq-pb-#{$i*5}{padding-bottom:5px * $i;}
+    .wq-pr-#{$i*5}{padding-right:5px * $i;}
+    .wq-mt-#{$i*5}{margin-top:5px * $i;}
+    .wq-ml-#{$i*5}{margin-left:5px * $i;}
+    .wq-mb-#{$i*5}{margin-bottom:5px * $i;}
+    .wq-mr-#{$i*5}{margin-right:5px * $i;}
+}

@@ -151,6 +151,7 @@ module.exports = function (app) {
             blog.day = (date.getMonth() + 1) + "-" + date.getDate();
             blog.year = date.getFullYear();
             res.render('front/paper', {
+                layout: 'boot',
                 title: blog.title,
                 post: blog
             });
