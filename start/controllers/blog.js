@@ -16,8 +16,9 @@ module.exports = function (app) {
                     blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();
                     blogs[index].year = date.getFullYear();
                 }
+                console.log(blogs);
                 res.render('home', {
-                    title: 'YANWEIQING',
+                    title: '严伟庆博客 - 寿百年',
                     file: {
                         name: '最近更新',
                         title: '勿忘初衷',
@@ -157,7 +158,7 @@ module.exports = function (app) {
             blog.year = date.getFullYear();
             res.render('front/paper', {
                 layout: 'boot',
-                title: blog.title,
+                title: blog.title + ' - 寿百年',
                 post: blog
             });
         });
@@ -167,7 +168,16 @@ module.exports = function (app) {
     app.get('/tags', function (req, res) {
         Tag.find({}).exec(function (err, tags) {
             res.render('front/tag', {
-                title: '标签列表',
+                title: '标签列表' + ' - 寿百年',
+                file: {
+                    name: '标签列表',
+                    title: '标签标签标签',
+                    content: [
+                        '测试测试测试1o',
+                        '测试测试测试2',
+                        '测试测试测试3',
+                    ]
+                },
                 tags: tags
             });
         });
@@ -177,7 +187,16 @@ module.exports = function (app) {
     app.get('/topics', function (req, res) {
         Topic.find({}).exec(function (err, topics) {
             res.render('front/topic', {
-                title: '分类列表',
+                title: '分类列表' + ' - 寿百年',
+                file: {
+                    name: '分类列表',
+                    title: '分类分类分类',
+                    content: [
+                        '测试测试测试1o',
+                        '测试测试测试2',
+                        '测试测试测试3',
+                    ]
+                },
                 topics: topics
             });
         });
@@ -188,11 +207,11 @@ module.exports = function (app) {
         var year = req.params.year;
         if (year) {
             res.render('front/archives', {
-                title: '文章存档' + year
+                title: '文章存档:' + year + ' - 寿百年'
             });
         } else {
             res.render('pages/archives', {
-                title: '文章存档'
+                title: '文章存档' + ' - 寿百年'
             });
         }
 

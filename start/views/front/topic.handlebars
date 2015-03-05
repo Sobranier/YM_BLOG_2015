@@ -1,7 +1,10 @@
 <div class="row">
     <div class="col-md-12">
+        <h1 class="page-title">{{file.name}}</h1>
         {{#each topics}}
-            <a class="btn btn-primary" href="/topics/{{name}}">{{name}}</a>
+        <div class="col-sm-2 wq-mb-5">
+            <a class="btn btn-primary btn-block" href="/topics/{{name}}"><span class="fui-list fl"></span>{{name}}</a>
+        </div>
         {{/each}}
     </div>
 </div>

@@ -84,22 +84,29 @@
         background-color:#fafafa;
     }
     h2 {
-        margin-top:0;
+        margin-top:0;margin-bottom:0;
         font-size:30px;
     }
     .post-content {
         padding:10px;
+        p {
+            margin-bottom:0;
+        }
     }
-    .post-tag {
-        &>span {
-            margin-left:10px;
-        }
-        .fa {
-            margin-right:4px;
-        }
+}
+.post-tag {
+    font-size:14px;
+    &>span {
+        margin-left:10px;
+        margin-right:10px;
+    }
+    .fa {
+        margin-right:4px;
+    }
+    a {
+        margin-right:4px;
     }
 }
 .post-pagination {
     padding-top:20px;
-    padding-bottom:30px;
 }

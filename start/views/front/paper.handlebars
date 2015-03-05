@@ -1,30 +1,32 @@
 <div class="row">
     <div class="col-md-12">
         <h1 class="page-title">{{post.title}}</h1>
-
-        <pre>{{post.content}}</pre>
-
         <div class="post-tag">
             <span>
                 <i class="fa fa-calendar-o"></i>
                 {{post.year}}-{{post.day}}
             </span>
+        </div>
+
+        <pre>{{post.content}}</pre>
+
+        <div class="post-tag">
+            {{#if post.topics}}
             <span>
                 <i class="fa fa-files-o"></i>分类:
                 {{#each post.topics}}
                 <a href="/topics/{{this}}">{{this}}</a>
                 {{/each}}
             </span>
+            {{/if}}
+            {{#if post.tags}}
             <span>
                 <i class="fa fa-tags"></i>标签:
                 {{#each post.tags}}
                 <a href="/tags/{{this}}">{{this}}</a>
                 {{/each}}
             </span>
-        </div>
-        <div class="post-tag">
-            更早一篇<a href="/posts/??">上</a>
-            更新一篇<a href="/posts/??">下</a>
+            {{/if}}
         </div>
     </div>
 </div>

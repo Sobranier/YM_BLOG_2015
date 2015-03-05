@@ -190,19 +190,23 @@ module.exports = function (app) {
         newTopic.save();
         res.redirect('back');
     });
-    app.get('/end/tagdel/:id', checkLogin);
-    app.get('/end/tagdel/:id', function (req, res) {
+    app.post('/end/tagdel/:id', checkLogin);
+    app.post('/end/tagdel/:id', function (req, res) {
         Tag.remove({_id: req.params.id}, function (err, tt) {
-            console.log('删除tag');
+            res.json({
+                success: true,
+                ret: '删除成功'
+            });
         });
-        res.redirect('back');
     });
-    app.get('/end/topicdel/:id', checkLogin);
-    app.get('/end/topicdel/:id', function (req, res) {
+    app.post('/end/topicdel/:id', checkLogin);
+    app.post('/end/topicdel/:id', function (req, res) {
         Topic.remove({_id: req.params.id}, function (err, tt) {
-            console.log('删除topic');
+            res.json({
+                success: true,
+                ret: '删除成功'
+            });
         });
-        res.redirect('back');
     });
 
 

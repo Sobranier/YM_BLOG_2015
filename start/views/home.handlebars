@@ -12,24 +12,28 @@
             </div>
             <div class="post-tag">
                 <span><i class="fa fa-calendar-o"></i>{{year}}-{{day}}</span>
+                {{#if topics}}
                 <span>
                     <i class="fa fa-files-o"></i>分类:
                     {{#each topics}}
                     <a href="/topics/{{this}}">{{this}}</a>
                     {{/each}}
                 </span>
+                {{/if}}
+                {{#if tags}}
                 <span>
                     <i class="fa fa-tags"></i>标签:
                     {{#each tags}}
                     <a href="/tags/{{this}}">{{this}}</a>
                     {{/each}}
                 </span>
+                {{/if}}
             </div>
         </div>
         {{/each}}
 
         <div class="post-pagination">
-            <a class="btn btn-primary" href="/blog">浏览更多文章</a>
+            <a class="btn btn-primary btn-xs" href="/blog">浏览更多文章<span class="fui-loop"></span></a>
         </div>
 
     </div>

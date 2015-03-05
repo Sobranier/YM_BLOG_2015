@@ -10,12 +10,32 @@
         <h1 class="page-title">{{title}}</h1>
 
         {{#each tags}}
-        <button class="btn btn-inverse">{{name}}<a class="fui-cross" href="/end/tagdel/{{_id}}"></a></button>
+        <div class="col-sm-2 wq-mb-5">
+            <button class="btn btn-inverse btn-block">{{name}}<a class="fui-cross fr" data-url="/end/tagdel/{{_id}}" data-name="{{name}}"></a></button>
+        </div>
         {{/each}}
 
-        <form method="post" action="/end/tagadd">
-            <input name="name" type="text" class="form-control" placeholder="name" />
-        </form>
+        <div class="col-sm-2 wq-mb-5">
+            <form method="post" action="/end/tagadd">
+                <input name="name" type="text" class="form-control" autofocus placeholder="name" />
+            </form>
+        </div>
+    </div>
+</div>
 <script>
+$('a.fui-cross').bind('click', function () {
+    var parentNode = $(this).parent().parent('div');
+    if (confirm('确认删除标签"' + $(this).attr('data-name') + '"?')) {
+        $.post($(this).attr('data-url'),
+        {},
+        function (data, status) {
+            if (status == 'success') {
+                parentNode.remove();
+            } else {
+                alert('操作失败');
+            }
+        });
+    }
+});
 </script>
 
