@@ -848,7 +848,8 @@
 }
 @media (min-width: 768px) {
   .boot-wrapper.container-fluid {
-    margin-left: 66px;
+    margin-left: 96px;
+    margin-right: 30px;
   }
 }
 @media (max-width: 767px) {
@@ -861,13 +862,13 @@
   }
 }
 /*login-page*/
-@media (min-width: 1036px) {
+@media (min-width: 1096px) {
   .boot-wrapper.container-fluid .login {
     width: 940px;
     margin: 10px auto 25px;
   }
 }
-@media (max-width: 1035px) {
+@media (max-width: 1095px) {
   .boot-wrapper.container-fluid .login {
     background: none;
     padding-bottom: 38px;
@@ -931,6 +932,10 @@
 
 .boot-wrapper h1.page-title {
   font-size: 30px;
+}
+.boot-wrapper .paper-wrapper {
+  border-bottom: 1px dashed #cacaca;
+  padding-bottom: 15px;
 }
 
 .footer {

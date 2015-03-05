@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 paper-wrapper">
         <h1 class="page-title">{{post.title}}</h1>
         <div class="post-tag">
             <span>
@@ -8,7 +8,9 @@
             </span>
         </div>
 
-        <pre>{{post.content}}</pre>
+        <div class="post-content" id="postContent">
+            {{{post.content}}}
+        </div>
 
         <div class="post-tag">
             {{#if post.topics}}
@@ -30,4 +32,8 @@
         </div>
     </div>
 </div>
+
+<script>
+
+</script>
 

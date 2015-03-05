@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    marked = require('marked'),
     Blog = require('../models/blog'),
     Tag = require('../models/tag'),
     Topic = require('../models/topic');
@@ -6,6 +7,42 @@ var mongoose = require('mongoose'),
 Blog = mongoose.model('Blog');
 Tag = mongoose.model('Tag');
 Topic = mongoose.model('Topic');
+
+var highlight = function(code, lang){
+    var o;
+
+    if(lang == 'js') {
+        lang = 'javascript';
+    } else if (lang == 'html') {
+        lang = 'xml';
+    }
+    if(lang){
+        o = hljs.highlight(lang, code);
+    } else {
+        o = hljs.highlightAuto(code).value;
+    }
+
+    if(o){
+        if (o.value) {
+            return o.value;
+        } else {
+            return o;
+        }
+    } else {
+        return code;
+    }
+};
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    smartypants: false
+    //highlight: highlight
+});
 
 module.exports = function (app) {
     app.get('/', function(req, res) {
@@ -156,6 +193,10 @@ module.exports = function (app) {
             var date = blog.date;
             blog.day = (date.getMonth() + 1) + "-" + date.getDate();
             blog.year = date.getFullYear();
+
+            var content = blog.content.replace(/\\n/g, '\n');
+            blog.content = marked(content);
+
             res.render('front/paper', {
                 layout: 'boot',
                 title: blog.title + ' - 寿百年',

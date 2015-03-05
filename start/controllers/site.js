@@ -36,6 +36,20 @@ module.exports = function (app) {
                 content: [
                     '测试测试测试1o',
                     '测试测试测试2',
+                    '测试测试测试3'
+                ]
+            }
+        });
+    });
+
+    app.get('/contact', function (req, res) {
+        res.render('pages/contact', {
+            title: '给我留言',
+            file: {
+                title: '留言我',
+                content: [
+                    '测试测试测试1o',
+                    '测试测试测试2',
                     '测试测试测试3',
                 ]
             }
@@ -48,8 +62,6 @@ module.exports = function (app) {
           title:'404'
       });
     });
-
-
 
 };
 
