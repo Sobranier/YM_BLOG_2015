@@ -53,7 +53,6 @@ module.exports = function (app) {
                     blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();
                     blogs[index].year = date.getFullYear();
                 }
-                console.log(blogs);
                 res.render('home', {
                     title: '严伟庆博客 - 寿百年',
                     file: {

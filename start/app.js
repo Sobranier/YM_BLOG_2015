@@ -31,6 +31,8 @@ app.use(cookieParser());
 app.use(require('express-session')({
     key: 'session',
     secret: 'SUPER SECRET SECRET',
+    resave: true,
+    saveUninitialized: true,
     store: require('mongoose-session')(mongoose)
 }));
 
