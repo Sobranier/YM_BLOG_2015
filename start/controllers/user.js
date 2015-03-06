@@ -38,6 +38,7 @@ module.exports = function (app) {
 
     app.post('/login',checkNotLogin);
     app.post('/login', function (req, res) {
+        console.log(req.session.user);
         var account = req.body.account,
             psw = req.body.password,
             bname = req.query.bname,

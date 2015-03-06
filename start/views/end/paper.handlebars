@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-12 paper-wrapper">
+        <h1 class="page-title">{{post.title}}</h1>
+        <div class="post-tag">
+            <span>
+                <i class="fa fa-calendar-o"></i>
+                {{post.year}}-{{post.day}}
+            </span>
+        </div>
+
+        <div class="post-content" id="postContent">
+            {{{post.content}}}
+        </div>
+
+        <div class="post-tag">
+            {{#if post.topics}}
+            <span>
+                <i class="fa fa-files-o"></i>分类:
+                {{#each post.topics}}
+                <a href="/topics/{{this}}">{{this}}</a>
+                {{/each}}
+            </span>
+            {{/if}}
+            {{#if post.tags}}
+            <span>
+                <i class="fa fa-tags"></i>标签:
+                {{#each post.tags}}
+                <a href="/tags/{{this}}">{{this}}</a>
+                {{/each}}
+            </span>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>
+

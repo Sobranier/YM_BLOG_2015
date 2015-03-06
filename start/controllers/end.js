@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    marked = require('marked'),
     Blog = require('../models/blog'),
     Tag = require('../models/tag'),
     Topic = require('../models/topic');
@@ -6,6 +7,18 @@ var mongoose = require('mongoose'),
 Blog = mongoose.model('Blog');
 Tag = mongoose.model('Tag');
 Topic = mongoose.model('Topic');
+
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    smartypants: false
+    //highlight: highlight
+});
 
 /* 后台controller */
 module.exports = function (app) {
@@ -75,10 +88,20 @@ module.exports = function (app) {
     });
     app.get('/end/preview/:alias?', checkLogin);
     app.get('/end/preview/:alias?', function (req, res) {
-      res.render('end/dashboard', {
-          layout: 'end',
-          title: '预览界面'
-      });
+        Blog.findOne({alias: req.params.alias}).exec(function (err, blog) {
+            var date = blog.date;
+            blog.day = (date.getMonth() + 1) + "-" + date.getDate();
+            blog.year = date.getFullYear();
+
+            var content = blog.content.replace(/\\n/g, '\n');
+            blog.content = marked(content);
+
+            res.render('end/paper', {
+                layout: 'end',
+                title: blog.title + ' - 寿百年',
+                post: blog
+            });
+        });
     });
 
     // 删除文章是比较严重的操作，前后端都需要再三验证
