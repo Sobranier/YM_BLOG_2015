@@ -47,7 +47,7 @@ marked.setOptions({
 module.exports = function (app) {
     app.get('/', function(req, res) {
         Blog.count({}, function (err, total) {
-            Blog.find({}).sort({'date':-1}).limit(3).exec(function (err, blogs) {
+            Blog.find({ifpublic : true}).sort({'date':-1}).limit(3).exec(function (err, blogs) {
                 for (var index in blogs) {
                     var date = blogs[index].date;
                     blogs[index].day = (date.getMonth() + 1) + "-" + date.getDate();
@@ -188,7 +188,7 @@ module.exports = function (app) {
 
     // 单个文章界面（可以和后台preview界面做一些联系）
     app.get('/blog/:alias', function (req, res) {
-        Blog.findOne({alias: req.params.alias}).exec(function (err, blog) {
+        Blog.findOne({alias: req.params.alias, ifpublic: true}).exec(function (err, blog) {
             var date = blog.date;
             blog.day = (date.getMonth() + 1) + "-" + date.getDate();
             blog.year = date.getFullYear();

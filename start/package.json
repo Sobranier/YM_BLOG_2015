@@ -22,7 +22,7 @@
     "express-session": "^1.10.2",
     "marked": "^0.3.3",
     "mongodb": "^1.4.30",
-    "mongoose": "^3.8.23",
+    "mongoose": "^3.8.24",
     "mongoose-session": "0.0.3"
   }
 }
