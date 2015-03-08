@@ -8,7 +8,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     exphbs = require('express-handlebars'),
     fs = require('fs'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    session = require('express-session');
 
 var app = express();
 mongoose.connect('mongodb://localhost/test');
@@ -28,12 +29,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(cookieParser());
 
-app.use(require('express-session')({
+app.use(session({
     key: 'session',
-    secret: 'SUPER SECRET SECRET',
+    secret: 'SUPER SECRET',
     resave: true,
     saveUninitialized: true,
-    store: require('mongoose-session')(mongoose)
+    cookie: {maxAge: 10 * 60 * 1000}
 }));
 
 fs.readdirSync('./controllers').forEach(function (file) {
