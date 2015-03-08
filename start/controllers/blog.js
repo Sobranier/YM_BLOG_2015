@@ -246,12 +246,9 @@ module.exports = function (app) {
     app.get('/archives/:year?', function (req, res) {
         var year = req.params.year;
         if (year) {
-            var config;
-            config.date = {$gte: new Date(year, 0, 1), $lt: new Date(year+1, 0, 1)};
+            Blog.find({date: {$gte: new Date(year, 0, 1), $lt: new Date(year+1, 0, 1)}}).sort({'date':-1}).exec(function (err, blogs) {
 
-            Blog.find(config).sort({'date':-1}).exec(function (err, blogs) {
-
-            }
+            });
 
 
             res.render('front/archives', {
