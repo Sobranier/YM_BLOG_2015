@@ -958,6 +958,28 @@
   margin: 5px;
 }
 
-.main-wrapper a {
-  color: #337ab7;
+.wq-archives-year {
+  margin-bottom: 10px;
+  padding: 4px;
+  border: 2px solid #eee;
+}
+.wq-archives-year:hover {
+  border-color: #31708f;
+}
+.wq-archives-year img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+.wq-archives-year h2 {
+  margin: 15px;
+  font-size: 18px;
+}
+.wq-archives-year p {
+  margin: 15px;
+  font-size: 16px;
+}
+.wq-archives-year.col-sm-6 p.wq-archives-content {
+  height: 60px;
 }

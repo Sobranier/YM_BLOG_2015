@@ -246,12 +246,38 @@ module.exports = function (app) {
     app.get('/archives/:year?', function (req, res) {
         var year = req.params.year;
         if (year) {
+            var config;
+            config.date = {$gte: new Date(year, 0, 1), $lt: new Date(year+1, 0, 1)};
+
+            Blog.find(config).sort({'date':-1}).exec(function (err, blogs) {
+
+            }
+
+
             res.render('front/archives', {
-                title: '文章存档:' + year + ' - 寿百年'
+                title: '文章存档:' + year + ' - 寿百年',
+                file: {
+                    name: '文章存档:' + year,
+                    title: '碎碎碎碎念',
+                    content: [
+                        '你好吗',
+                        '你好吗',
+                        '你好吗'
+                    ]
+                }
             });
         } else {
             res.render('pages/archives', {
-                title: '文章存档' + ' - 寿百年'
+                title: '文章存档' + ' - 寿百年',
+                file: {
+                    name: '文章存档',
+                    title: '碎碎碎碎碎念',
+                    content: [
+                        '123',
+                        '234',
+                        '456'
+                    ]
+                }
             });
         }
 

@@ -32,6 +32,10 @@
         </div>
         {{/each}}
 
+        {{#unless posts}}
+            <h2>当前{{kind}}没有找到文章哦</h2> 
+        {{/unless}}
+
         <div class="post-pagination clearfix">
             {{#if relatePage.notFirstPage}}
                 <a href="{{relatePage.action}}?page={{relatePage.prePage}}" class="btn btn-primary btn-xs fl wq-ml-10"><span class="fui-triangle-up-small"></span>更新的文章</a>

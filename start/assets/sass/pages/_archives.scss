@@ -1,0 +1,24 @@
+.wq-archives-year {
+    margin-bottom:10px;
+    padding:4px;
+    border:2px solid #eee;
+    &:hover {
+        border-color:#31708f;
+    }
+    img {
+        display:block;
+        margin:0 auto;
+        max-width:100%;height:auto;
+    }
+    h2 {
+        margin:15px;
+        font-size:18px;
+    }
+    p {
+        margin:10px 15px;
+        font-size:16px;
+    }
+    &.col-sm-6 p.wq-archives-content {
+        height:60px;
+    }
+}
