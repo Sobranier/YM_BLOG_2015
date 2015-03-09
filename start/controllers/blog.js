@@ -46,12 +46,6 @@ marked.setOptions({
 
 module.exports = function (app) {
     app.get('/', function(req, res) {
-        function sleep(milliSeconds) {
-                var startTime = new Date().getTime();
-                    while (new Date().getTime() < startTime + milliSeconds);
-                      }
-
-          sleep(10000);
         Blog.count({}, function (err, total) {
             Blog.find({ifpublic : true}).sort({'date':-1}).limit(3).exec(function (err, blogs) {
                 for (var index in blogs) {
@@ -138,7 +132,7 @@ module.exports = function (app) {
                     data: {
                         title: topic.name + ' - 寿百年',
                         file: topic,
-                        kind: '文章列表'
+                        kind: '分类列表'
                     }
                 }
                 getPaperList(res, params, false);
@@ -157,11 +151,15 @@ module.exports = function (app) {
         if (day) {
             var st = new Date(year, month-1, day),
                 et = new Date(year, month-1, day),
-                action = '/archives/' + year + '/' + month + '/' + day;
+                action = '/archives/' + year + '/' + month + '/' + day,
+                kind = '日期存档',
+                title = year + '-' + month + '-' + day;
             et.setDate(et.getDate() + 1);
         } else {
             var st = new Date(year, month-1, 1),
-                action = '/archives/' + year + '/' + month;
+                action = '/archives/' + year + '/' + month,
+                kind = '月份寸档',
+                title = year + '-' + month;
             if (month == 11) {
                 var et = new Date(year+1, 0, 1);
             } else {
@@ -177,8 +175,9 @@ module.exports = function (app) {
                 et: et
             },
             data: {
-                title: '时间分类' + ' - 寿百年',
+                title: '文章存档:' + title + ' - 寿百年',
                 file: {
+                    name: title,
                     title: '时间测试',
                     content: [
                         '你好吗1',
@@ -186,7 +185,7 @@ module.exports = function (app) {
                         '2你'
                     ]
                 },
-                kind: '文章时间'
+                kind: kind
             }
         }
         getPaperList(res, params, false);
@@ -327,7 +326,7 @@ module.exports = function (app) {
                             '你好吗'
                         ]
                     },
-                    month: month
+                    month: month.reverse()
                 });
             });
 

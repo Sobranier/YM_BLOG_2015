@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .fl {
   float: left;
 }
@@ -689,6 +690,7 @@
   margin-bottom: 0;
   border-color: transparent;
   background-color: transparent;
+  font-family: dfkai-sb, stkaiti, 標楷體, 华文楷体;
 }
 .wq-navbar-box.navbar .navbar-header {
   margin: 11px 3px;
@@ -807,6 +809,7 @@
   z-index: 99;
 }
 .feature-cover .feature-cover-word {
+  font-family: dfkai-sb, stkaiti, 標楷體, 华文楷体;
   position: absolute;
   top: 5em;
   left: 4em;
@@ -977,7 +980,7 @@
   font-size: 18px;
 }
 .wq-archives-year p {
-  margin: 15px;
+  margin: 10px 15px;
   font-size: 16px;
 }
 .wq-archives-year.col-sm-6 p.wq-archives-content {

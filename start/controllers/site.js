@@ -56,6 +56,20 @@ module.exports = function (app) {
         });
     });
 
+    app.get('/links', function (req, res) {
+        res.render('pages/links', {
+            title: '友情链接',
+            file: {
+                title: '留言我',
+                content: [
+                    '测试测试测试1o',
+                    '测试测试测试2',
+                    '测试测试测试3',
+                ]
+            }
+        });
+    });
+
     app.get('/404', function (req, res) {
       res.render('404', {
           layout: 'boot',
