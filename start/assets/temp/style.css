@@ -805,7 +805,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url("../images/bg/mountain.png");
+  background-image: url("../images/bg/mountain.jpg");
   z-index: 99;
 }
 .feature-cover .feature-cover-word {
