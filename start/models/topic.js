@@ -5,7 +5,8 @@ var Schema = mongoose.Schema;
 var topicSchema = new Schema({
     name: String,
     title: String,
-    content: Array
+    content: Array,
+    background: String
 },{
     collection: 'topic'
 });

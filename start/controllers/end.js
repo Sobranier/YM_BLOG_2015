@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     marked = require('marked'),
+    fs = require('fs'),
     Blog = require('../models/blog'),
     Tag = require('../models/tag'),
     Topic = require('../models/topic');
@@ -197,7 +198,8 @@ module.exports = function (app) {
                 layout: 'end',
                 title: '分类管理',
                 showPost: true,
-                topics: topics
+                topics: topics,
+                piclist: getPicList(false)
             });
         });
     });
@@ -243,7 +245,8 @@ module.exports = function (app) {
         res.render('end/pic', {
             layout: 'end',
             title: '图片后台',
-            showPic: true
+            showPic: true,
+            piclist: getPicList(true)
         });
     });
 
@@ -279,5 +282,27 @@ module.exports = function (app) {
         } else {
             next();
         }
+    }
+
+    function getPicList (boo) {
+        var piclist = [];
+        fs.readdirSync('./assets/images').forEach(function (file) {
+            if (!/\./.test(file)) {
+                var pic = {};
+                pic.name = file;
+                pic.files = [];
+                fs.readdirSync('./assets/images/' + file).forEach(function (img) {
+                    if (img.substr(-4) === '.png' || img.substr(-4) === '.jpg') {
+                        pic.files.push({name: '/images/' + file + '/' + img});
+                    }
+                });
+                if (boo) {
+                    piclist.push(pic);
+                } else {
+                    piclist = piclist.concat(pic.files);
+                }
+            }
+        });
+        return piclist;
     }
 };

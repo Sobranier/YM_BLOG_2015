@@ -59,9 +59,8 @@ module.exports = function (app) {
                         name: '最近更新',
                         title: '勿忘初衷',
                         content: [
-                            '测试测试测试1',
-                            '测试测试测试2',
-                            '测试测试测试3',
+                            '既往不恋',
+                            '纵情向前',
                         ]
                     },
                     posts: blogs

@@ -34,7 +34,7 @@ app.use(session({
     secret: 'SUPER SECRET',
     resave: true,
     saveUninitialized: true,
-    cookie: {maxAge: 10 * 60 * 1000}
+    cookie: {maxAge: 60 * 60 * 1000}
 }));
 
 fs.readdirSync('./controllers').forEach(function (file) {

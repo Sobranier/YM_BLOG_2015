@@ -5,7 +5,19 @@
             <li class="active">{{title}}</li>
         </ol>
         <h1 class="page-title">{{title}}</h1>
+        {{#each piclist}}
+        <h2 class="sub-title">{{name}}</h2>
+        <div class="col-sm-12">
+            {{#each files}}
+            <div class="col-sm-4">
+                <div class="wq-archives-year">
+                    <img src="{{name}}">
+                    <p class="wq-archives-content">{{name}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{/each}}
     </div>
-
 </div>
 
