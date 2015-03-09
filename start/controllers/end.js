@@ -48,6 +48,7 @@ module.exports = function (app) {
             Tag.find({}).exec(function (err, tags) {
                 Topic.find({}).exec(function (err, topics) {
                     if (blog) {
+
                         for (var i = 0; i < blog.tags.length; i ++) {
                             for (var j = 0; j < tags.length; j ++) {
                                 if (tags[j].name == blog.tags[i]) {
@@ -72,6 +73,9 @@ module.exports = function (app) {
                         if (!blog.ifsafe) {
                             blog.safestatus = true;
                         }
+                    } else {
+                        blog = {};
+                        blog.date = new Date();
                     }
 
                     res.render('end/post', {

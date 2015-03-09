@@ -2,14 +2,26 @@
     <div class="col-md-12">
         <h1 class="page-title">{{file.name}}</h1>
 
-        <div class="col-sm-12">
-            <div class="wq-archives-year">
-                <img src="/images/bg/tt.png">
-                <h2>二零一五年文章存档</h2>
-                <p class="wq-archives-content">新的一年，会发生什么呢，很是期待</p>
-                <p class="clearfix"><a href="/archives" class="btn btn-primary btn-xs fr">返回列表</a></p>
-            </div>
+        <div class="wq-archives-year">
+            <img src="/images/bg/tt.png">
+            <h2>二零一五年文章存档</h2>
+            <p class="wq-archives-content">新的一年，会发生什么呢，很是期待</p>
+            <p class="clearfix"><a href="/archives" class="btn btn-primary btn-xs fr">返回列表</a></p>
         </div>
+
+        {{#each month}}
+        {{#if posts}}
+        <div class="panel panel-default">
+            <div class="panel-heading">{{year}} - <a href="/archives/{{year}}/{{alias}}">{{name}}({{amount}}篇文章)</a></div>
+            <ul>
+                {{#each posts}}
+                <li>{{day}}日<a href="/blog{{alias}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+        {{/each}}
+
     </div>
 </div>
 

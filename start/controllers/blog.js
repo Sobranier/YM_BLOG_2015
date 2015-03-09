@@ -46,6 +46,12 @@ marked.setOptions({
 
 module.exports = function (app) {
     app.get('/', function(req, res) {
+        function sleep(milliSeconds) {
+                var startTime = new Date().getTime();
+                    while (new Date().getTime() < startTime + milliSeconds);
+                      }
+
+          sleep(10000);
         Blog.count({}, function (err, total) {
             Blog.find({ifpublic : true}).sort({'date':-1}).limit(3).exec(function (err, blogs) {
                 for (var index in blogs) {
@@ -247,22 +253,86 @@ module.exports = function (app) {
         var year = req.params.year;
         if (year) {
             Blog.find({date: {$gte: new Date(year, 0, 1), $lt: new Date(year+1, 0, 1)}}).sort({'date':-1}).exec(function (err, blogs) {
+                var month=[
+                    {
+                        year: year,
+                        name: "January"
+                    },
+                    {
+                        year: year,
+                        name: "February"
+                    },
+                    {
+                        year: year,
+                        name: "March"
+                    },
+                    {
+                        year: year,
+                        name: "April"
+                    },
+                    {
+                        year: year,
+                        name: "May"
+                    },
+                    {
+                        year: year,
+                        name: "June"
+                    },
+                    {
+                        year: year,
+                        name: "July"
+                    },
+                    {
+                        year: year,
+                        name: "August"
+                    },
+                    {
+                        year: year,
+                        name: "September"
+                    },
+                    {
+                        year: year,
+                        name: "October"
+                    },
+                    {
+                        year: year,
+                        name: "November"
+                    },
+                    {
+                        year: year,
+                        name: "December"
+                    }
+                ];
+                for (var i = 0; i < blogs.length; i ++) {
+                    var j = blogs[i].date.getMonth();
+                    if (!month[j].posts) {
+                        month[j].posts = [];
+                    }
 
-            });
-
-
-            res.render('front/archives', {
-                title: '文章存档:' + year + ' - 寿百年',
-                file: {
-                    name: '文章存档:' + year,
-                    title: '碎碎碎碎念',
-                    content: [
-                        '你好吗',
-                        '你好吗',
-                        '你好吗'
-                    ]
+                    blogs[i].day = blogs[i].date.getDate();
+                    month[j].posts.push(blogs[i]);
                 }
+                for (var i = 0; i < 12; i ++) {
+                    month[i].amount = month[i].posts ? month[i].posts.length : 0;
+                    month[i].alias = i + 1;
+                }
+                res.render('front/archives', {
+                    title: '文章存档:' + year + ' - 寿百年',
+                    file: {
+                        name: '文章存档:' + year,
+                        title: '碎碎碎碎念',
+                        content: [
+                            '你好吗',
+                            '你好吗',
+                            '你好吗'
+                        ]
+                    },
+                    month: month
+                });
             });
+
+
+
         } else {
             res.render('pages/archives', {
                 title: '文章存档' + ' - 寿百年',
