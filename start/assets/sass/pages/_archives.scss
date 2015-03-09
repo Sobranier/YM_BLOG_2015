@@ -1,10 +1,7 @@
-.wq-archives-year {
+.wq-archives-year, .wq-block{
     margin-bottom:10px;
     padding:4px;
     border:2px solid #eee;
-    &:hover {
-        border-color:#31708f;
-    }
     img {
         display:block;
         margin:0 auto;
@@ -15,10 +12,33 @@
         font-size:18px;
     }
     p {
+        text-indent:2em;
         margin:10px 15px;
         font-size:16px;
+        .btn {
+            text-indent:0;
+        }
     }
     &.col-sm-6 p.wq-archives-content {
         height:60px;
+    }
+    blockquote {
+        margin: 10px 3em;border-color:#31708f;font-size:16px;
+        ul {
+            list-style:none;
+            padding-left:0;
+            li {
+                position:relative;
+            }
+            .btn {
+                position:absolute;
+                left:88px;top:4px;
+            }
+        }
+    }
+}
+.wq-archives-year:hover {
+    &:hover {
+        border-color:#31708f;
     }
 }

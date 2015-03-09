@@ -811,7 +811,7 @@
 .feature-cover .feature-cover-word {
   font-family: dfkai-sb, stkaiti, 標楷體, 华文楷体;
   position: absolute;
-  top: 5em;
+  top: 1em;
   left: 4em;
   color: white;
 }
@@ -820,7 +820,7 @@
   width: 1em;
 }
 .feature-cover .feature-cover-word .feature-cover-content {
-  margin-top: 60px;
+  margin-top: 76px;
   margin-left: 10px;
 }
 
@@ -961,28 +961,50 @@
   margin: 5px;
 }
 
-.wq-archives-year {
+.wq-archives-year, .wq-block {
   margin-bottom: 10px;
   padding: 4px;
   border: 2px solid #eee;
 }
-.wq-archives-year:hover {
-  border-color: #31708f;
-}
-.wq-archives-year img {
+.wq-archives-year img, .wq-block img {
   display: block;
   margin: 0 auto;
   max-width: 100%;
   height: auto;
 }
-.wq-archives-year h2 {
+.wq-archives-year h2, .wq-block h2 {
   margin: 15px;
   font-size: 18px;
 }
-.wq-archives-year p {
+.wq-archives-year p, .wq-block p {
+  text-indent: 2em;
   margin: 10px 15px;
   font-size: 16px;
 }
-.wq-archives-year.col-sm-6 p.wq-archives-content {
+.wq-archives-year p .btn, .wq-block p .btn {
+  text-indent: 0;
+}
+.wq-archives-year.col-sm-6 p.wq-archives-content, .wq-block.col-sm-6 p.wq-archives-content {
   height: 60px;
+}
+.wq-archives-year blockquote, .wq-block blockquote {
+  margin: 10px 3em;
+  border-color: #31708f;
+  font-size: 16px;
+}
+.wq-archives-year blockquote ul, .wq-block blockquote ul {
+  list-style: none;
+  padding-left: 0;
+}
+.wq-archives-year blockquote ul li, .wq-block blockquote ul li {
+  position: relative;
+}
+.wq-archives-year blockquote ul .btn, .wq-block blockquote ul .btn {
+  position: absolute;
+  left: 88px;
+  top: 4px;
+}
+
+.wq-archives-year:hover:hover {
+  border-color: #31708f;
 }
