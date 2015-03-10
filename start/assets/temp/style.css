@@ -1004,6 +1004,16 @@
   left: 88px;
   top: 4px;
 }
+.wq-archives-year .wq-item-list, .wq-block .wq-item-list {
+  display: block;
+  padding-left: 30px;
+}
+.wq-archives-year .wq-item-list:hover, .wq-block .wq-item-list:hover {
+  background-color: #eee;
+}
+.wq-archives-year .wq-item-list .fui-link, .wq-block .wq-item-list .fui-link {
+  padding-right: 5px;
+}
 
 .wq-archives-year:hover:hover {
   border-color: #31708f;

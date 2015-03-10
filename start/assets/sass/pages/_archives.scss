@@ -36,6 +36,16 @@
             }
         }
     }
+    .wq-item-list {
+        display:block;
+        padding-left:30px;
+        &:hover {
+            background-color:#eee;
+        }
+        .fui-link {
+            padding-right:5px;
+        }
+    }
 }
 .wq-archives-year:hover {
     &:hover {
