@@ -192,7 +192,7 @@ module.exports = function (app) {
 
     // 单个文章界面（可以和后台preview界面做一些联系）
     app.get('/blog/:alias', function (req, res) {
-        Blog.findOne({alias: req.params.alias, ifpublic: true}).exec(function (err, blog) {
+        Blog.findOne({alias: req.params.alias}).exec(function (err, blog) {
             var date = blog.date;
             blog.day = (date.getMonth() + 1) + "-" + date.getDate();
             blog.year = date.getFullYear();
