@@ -2,7 +2,6 @@
 var express = require('express'),
     debug = require('debug')('start'),
     path = require('path'),
-    favicon = require('serve-favicon'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
@@ -22,7 +21,6 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 3000);
-//app.use(favicon(__dirname + '/assets/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

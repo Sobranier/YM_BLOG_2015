@@ -1,18 +1,40 @@
-$.fn.serializeObject = function () {
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function() {
-        if (o[this.name] !== undefined) {
-            if (!o[this.name].push) {
-                o[this.name] = [o[this.name]];
-            }
-            o[this.name].push(this.value || '');
-        } else {
-            o[this.name] = this.value || '';
-        }
+requirejs.config({
+    paths: {
+        jquery: 'vendor/jquery.min',     
+        flatui: 'vendor/flat-ui.min',
+        highlight: 'vendor/highlight.min'
+    },
+    shim: {
+        flatui: ['jquery']      
+    }
+});
+
+requirejs(['jquery', 'flatui'], function($) {
+    $('#navbarToggle').bind('click', function () {
+        $('#collapseNav').toggleClass('collapse');
     });
-    return o;
-};
+    $('[data-toggle="tooltip"]').tooltip();
+
+
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+
+});
+
 
 
 /*

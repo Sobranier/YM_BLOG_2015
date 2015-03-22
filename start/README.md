@@ -8,7 +8,7 @@
 * express高级使用，前端架构逐步生成  ✔
 * 阿里云系统搭建  ✔
 * mongoose初步  ✔
-* jquery/angular选型，使用（后台系统使用angular，前端使用jquery+require）
+* jquery/angular选型，使用（后台系统使用angular，前端使用jquery+require  ✔
 * mongoose深入  ✔
 * gaevent深入
 * flat-ui使用  ✔
