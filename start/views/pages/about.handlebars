@@ -5,7 +5,34 @@
             <img src="/images/bg/tt.png">
         </div>
         <div class="wq-block">
-            <h2>instanceof ME</h2>
+            <h2>Instanceof ME</h2>
+            <pre>
+                <code class="lang-js">
+(function(IM,Sobranie){
+    var profile = {
+        '姓名':'严伟庆',
+        '年龄':(new Date).getFullYear() - 1991,
+        '兴趣':['前端','编程','摄影','画画','骑行','...'],
+        '家乡':'江苏泰兴'
+    }
+    var WQ = function(){
+        this.profile = profile;
+        var that = this;
+        this.profile.昵称 = IM;
+        this.profile.状态 = Sobranie;
+        this.profile.dream = "做一个安静的艺术家",
+        this.ShowMySelf = function() {
+            for (item in that.profile) {
+            if ('object' == typeof that.profile[item]){that.profile[item] = that.profile[item].join(', ');}
+                console.log(item + ':' + that.profile[item]);
+            }
+        }
+    }
+    var me = new WQ();
+    me.ShowMySelf();
+})('pdd','衣带渐宽终不悔，为伊消得人憔悴');
+                </code>
+            </pre>
 
         </div>
         <div class="wq-block">
@@ -28,9 +55,11 @@
 
         <div class="wq-block">
             <h2>碎碎念</h2>
-            <p>虽然是90后，但是到了社会上已经明显感到我们的老态。</p>
+            <p>我是个爱闹腾的人，虽然外表看上去并非如此。</p>
         </div>
 
     </div>
 </div>
-
+<script>
+    requirejs(['mou/highlightint']);
+</script>
