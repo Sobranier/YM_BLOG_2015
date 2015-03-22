@@ -943,6 +943,15 @@
   border-bottom: 1px dashed #cacaca;
   padding-bottom: 15px;
 }
+.boot-wrapper .paper-wrapper img {
+  max-width: 100%;
+  max-height: 400px;
+  clear: both;
+  display: block;
+  margin: auto;
+  border: 2px solid #e7e9ec;
+  border-radius: 6px;
+}
 
 .footer {
   margin-top: 20px;
