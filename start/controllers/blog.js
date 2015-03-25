@@ -157,7 +157,7 @@ module.exports = function (app) {
         } else {
             var st = new Date(year, month-1, 1),
                 action = '/archives/' + year + '/' + month,
-                kind = '月份寸档',
+                kind = '月份存档',
                 title = year + '-' + month;
             if (month == 11) {
                 var et = new Date(year+1, 0, 1);
