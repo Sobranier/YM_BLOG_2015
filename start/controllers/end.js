@@ -18,7 +18,6 @@ marked.setOptions({
     sanitize: true,
     smartLists: true,
     smartypants: false
-    //highlight: highlight
 });
 
 /* 后台controller */

@@ -8,30 +8,6 @@ Blog = mongoose.model('Blog');
 Tag = mongoose.model('Tag');
 Topic = mongoose.model('Topic');
 
-var highlight = function(code, lang){
-    var o;
-
-    if(lang == 'js') {
-        lang = 'javascript';
-    } else if (lang == 'html') {
-        lang = 'xml';
-    }
-    if(lang){
-        o = hljs.highlight(lang, code);
-    } else {
-        o = hljs.highlightAuto(code).value;
-    }
-
-    if(o){
-        if (o.value) {
-            return o.value;
-        } else {
-            return o;
-        }
-    } else {
-        return code;
-    }
-};
 marked.setOptions({
     renderer: new marked.Renderer(),
     gfm: true,
@@ -41,7 +17,6 @@ marked.setOptions({
     sanitize: true,
     smartLists: true,
     smartypants: false
-    //highlight: highlight
 });
 
 module.exports = function (app) {
@@ -57,7 +32,7 @@ module.exports = function (app) {
                     title: '严伟庆博客 - 寿百年',
                     file: {
                         name: '最近更新',
-                        title: '勿忘初衷',
+                        title: '',
                         content: [
                             '既往不恋',
                             '纵情向前',
