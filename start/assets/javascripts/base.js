@@ -15,6 +15,10 @@ requirejs(['jquery', 'flatui'], function($) {
     });
     $('[data-toggle="tooltip"]').tooltip();
 
+    $(document).ready(function(){
+        $('.feature-cover').removeClass('loading-hidden');
+        $('.main-wrapper').removeClass('loading-change');
+    });
 
     $.fn.serializeObject = function () {
         var o = {};

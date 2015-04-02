@@ -7,7 +7,7 @@
         font-size:20px;
     }
     &.main-wrapper--end {
-        margin-left:0px;
+        margin-left:66px;
     }
 }
 
@@ -26,6 +26,9 @@
 @media (min-width: 980px) {
     .main-wrapper.container-fluid {
         margin-left:220px;
+        &.loading-change {
+            margin-left:0;
+        }
     }
 }
 @media (min-width: 768px) and (max-width: 979px) {

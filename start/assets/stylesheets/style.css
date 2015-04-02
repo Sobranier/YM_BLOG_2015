@@ -823,6 +823,10 @@
   margin-top: 76px;
   margin-left: 10px;
 }
+.feature-cover.loading-hidden {
+  width: 0;
+  overflow: hidden;
+}
 
 @media (max-width: 979px) {
   .feature-cover {
@@ -836,7 +840,7 @@
   font-size: 20px;
 }
 .main-wrapper.container-fluid.main-wrapper--end {
-  margin-left: 0px;
+  margin-left: 66px;
 }
 
 .carousel img {
@@ -851,6 +855,9 @@
 @media (min-width: 980px) {
   .main-wrapper.container-fluid {
     margin-left: 220px;
+  }
+  .main-wrapper.container-fluid.loading-change {
+    margin-left: 0;
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
@@ -1038,4 +1045,10 @@
 
 .wq-archives-year:hover:hover {
   border-color: #31708f;
+}
+
+* {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
 }

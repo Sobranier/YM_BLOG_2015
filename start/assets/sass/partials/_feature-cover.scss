@@ -17,7 +17,11 @@
             margin-top:76px;margin-left:10px;
         }
     }
+    &.loading-hidden {
+        width:0;overflow:hidden;
+    }
 }
+
 @media (max-width: 979px) {
     .feature-cover {
         display:none;

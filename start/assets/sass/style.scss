@@ -12,6 +12,11 @@
 
 @import "pages/archives";
 
+* {
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+}
 h1{
     //@include test-sprite(icon_tel);
 }
