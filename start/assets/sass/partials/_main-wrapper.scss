@@ -11,6 +11,18 @@
     }
 }
 
+.carousel {
+    img {
+        width:100%;
+    }
+}
+
+.post-content {
+    a {
+        word-break:break-all; word-wrap:break-word;
+    }
+}
+
 @media (min-width: 980px) {
     .main-wrapper.container-fluid {
         margin-left:220px;
