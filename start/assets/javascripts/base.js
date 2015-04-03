@@ -10,16 +10,24 @@ requirejs.config({
 });
 
 requirejs(['jquery', 'flatui'], function($) {
+    // 顶部菜单栏
     $('#navbarToggle').bind('click', function () {
         $('#collapseNav').toggleClass('collapse');
     });
+    // 左侧悬浮框
     $('[data-toggle="tooltip"]').tooltip();
 
+    // 加载完成后操作
     $(document).ready(function(){
         $('.feature-cover').removeClass('loading-hidden');
         $('.main-wrapper').removeClass('loading-change');
+        setTimeout(function(){
+            $('.feature-cover').find('h3').css('display', 'block');
+            $('.feature-cover').find('p').css('display', 'block');
+        }, 700);
     });
 
+    // serialized相关，具体功能未知
     $.fn.serializeObject = function () {
         var o = {};
         var a = this.serializeArray();
