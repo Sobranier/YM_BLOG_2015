@@ -841,7 +841,7 @@
   font-size: 20px;
 }
 .main-wrapper.container-fluid.main-wrapper--end {
-  margin-left: 66px;
+  margin-left: 0;
 }
 
 .carousel img {

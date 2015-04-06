@@ -19,7 +19,9 @@ module.exports = function (app) {
                     });
                 });
 
-                res.send(items);
+                res.render('pages/test', {
+                    info: items
+                });
             });
     });
 
