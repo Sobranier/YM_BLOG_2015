@@ -27,6 +27,80 @@ requirejs(['jquery', 'flatui'], function($) {
         }, 700);
     });
 
+    // 返回顶部
+    if (/music/.test(location.href)) {
+    } else {
+        $('.J-up-top').on('click', function() {
+            $('body').animate({scrollTop: 0}, '500');
+        });
+    }
+
+    // 获取浏览器高度
+    function getWindowHeight() {
+        return $(window).height();
+    }
+
+    // 获取浏览器宽度
+    function getWindowWidth() {
+        return $(window).width();
+    }
+    
+    // 获取滚动高度
+    function getWindowScroll() {
+        return $(document).scrollTop();
+    }
+
+    var windowScroll = {
+        w_height: getWindowHeight(),
+        onReady: function() {
+            console.log(getWindowHeight());
+            $(window).on('scroll', function() {
+                this.checkScroll();
+            });
+            $(window).on('resize', function() {
+                this.checkScroll();
+            });
+        },
+        checkScroll: function() {
+            consol.log(getWindowHeight()); 
+            console.log(w_height);
+        }
+    };
+    $(document).ready(windowScroll.onReady);
+
+/*
+*        $(window).scroll(function(){
+*                    var w_height = $(window).height();//浏览器高度
+*                                var scroll_top = $(document).scrollTop();//滚动条到顶部的垂直高度
+*                                            if(scroll_top > w_height){
+*                                                                $("#goto-top").fadeIn(500);
+*                                                                                }else{
+*                                                                                                    $("#goto-top").fadeOut(500);
+*                                                                                                                }
+*                                                                                                                        });
+* */
+
+    /*
+
+var PI = {
+        onReady : function() {
+                              $('#magic').click(PI.candyMtn);
+                                      $('#happiness').load(PI.url + ' #unicorns', PI.unicornCb);
+                                          },
+
+            candyMtn : function(e) {
+                                   $('#yayeffects').slideUp(PI.slideCb);
+                                       },
+
+                slideCb : function() { ... },
+
+                    unicornCb : function() { ... }
+};
+
+$(document).ready(PI.onReady);
+
+*/
+
     // serialized相关，具体功能未知
     $.fn.serializeObject = function () {
         var o = {};

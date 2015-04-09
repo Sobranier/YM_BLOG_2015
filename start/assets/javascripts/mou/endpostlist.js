@@ -29,7 +29,7 @@ define(['jquery', 'flatui', 'base'], function ($) {
                             "   <td>" + pos['date'] + "</td>" +
                             "   <td><input class='J-switch' type='checkbox' " + statuschecked + " data-toggle='switch' data-on-color='primary' data-off-color='default' data-id='" + pos['_id'] + "'/>" + "</td>" +
                             "   <td><input type='checkbox' " + safechecked + " disabled data-toggle='switch'/></td>" +
-                            "   <td><a class='fui-eye' rel='预览' target='_blank' href='/end/preview/" + pos['alias'] + "'>预</a><a class='fui-new' rel='编辑' href='/end/paperedit/" + pos['_id'] + "'>编</a><a class='fui-trash' rel='删除' data-url='/end/delBlog/" + pos['_id'] + "'>删</a></td>" +
+                            "   <td><a class='fui-eye' rel='预览' target='_blank' href='/end/preview/" + pos['alias'] + "'>预</a><a class='fui-new' rel='编辑' target='_blank' href='/end/paperedit/" + pos['_id'] + "'>编</a><a class='fui-trash' rel='删除' data-url='/end/delBlog/" + pos['_id'] + "'>删</a></td>" +
                             "</tr>";
                     $('#table_search').append($(tr));
                 }

@@ -167,3 +167,27 @@ newBlog.save();
 
 1、首页轮播图  ✔
 2、全面的lazyload
+
+分类
+牧：coding
+——前端思索
+——全站尝试
+——读书笔记note
+——成长总结summart
+
+与:joy
+——阅读reading
+——观影movie
+——用家evaluation
+——撒欢sahuan
+
+漂:life
+——生活随笔:life
+——杂乱文章:writing(侧重原创文学)
+——资源分享:share
+——文章存档archives
+
+流:about
+--关于:about
+--友情链接:links
+--留言:contact

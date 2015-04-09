@@ -23,6 +23,11 @@
     }
 }
 
+.up-top {
+    position: fixed;bottom: 20px;right: 20px;
+    font-size: 32px;cursor: pointer;
+}
+
 @media (min-width: 980px) {
     .main-wrapper.container-fluid {
         margin-left:220px;
