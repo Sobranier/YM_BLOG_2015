@@ -1021,6 +1021,11 @@
 .wq-archives-year p .btn, .wq-block p .btn {
   text-indent: 0;
 }
+.wq-archives-year .btn-fix, .wq-block .btn-fix {
+  position: absolute;
+  bottom: 16px;
+  right: 21px;
+}
 .wq-archives-year.col-sm-6 p.wq-archives-content, .wq-block.col-sm-6 p.wq-archives-content {
   height: 60px;
 }

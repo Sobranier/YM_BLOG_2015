@@ -19,6 +19,11 @@
             text-indent:0;
         }
     }
+    .btn-fix {
+        position: absolute;
+        bottom:16px;
+        right:21px;
+    }
     &.col-sm-6 p.wq-archives-content {
         height:60px;
     }

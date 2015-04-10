@@ -52,18 +52,36 @@ requirejs(['jquery', 'flatui'], function($) {
 
     var windowScroll = {
         w_height: getWindowHeight(),
+        s_height: getWindowScroll(),
         onReady: function() {
             console.log(getWindowHeight());
             $(window).on('scroll', function() {
-                this.checkScroll();
+                windowScroll.checkScroll();
             });
             $(window).on('resize', function() {
-                this.checkScroll();
+                windowScroll.checkScroll();
             });
         },
         checkScroll: function() {
-            consol.log(getWindowHeight()); 
-            console.log(w_height);
+            this.w_height = getWindowHeight();
+            this.s_height = getWindowScroll();
+            if (this.s_height > this.w_height) {
+                windowScroll.checkScrollBtn('.J-up-top', 'hidden', true);
+            } else {
+                windowScroll.checkScrollBtn('.J-up-top','hidden', false);
+            }
+        },
+        checkScrollBtn: function( selector, className, bool ) {
+            var node = $(selector);
+            if (bool) {
+                if (node.hasClass(className)) {
+                    node.removeClass(className);
+                }
+            } else {
+                if (!node.hasClass(className)) {
+                    node.addClass(className);
+                }
+            }
         }
     };
     $(document).ready(windowScroll.onReady);
