@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-title">{{title}}</h1>
+
+        {{#each info}}
+        <div class="col-sm-4">
+            <div class="wq-archives-year wq-archives-book">
+                <img src="{{book.image}}">
+                <div class="block-cover">
+                    <h2>{{book.title}}</h2>
+                    <p>{{book.author}}</p>
+                    <p>{{book.publisher}}</p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+    </div>
+</div>

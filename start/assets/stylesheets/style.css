@@ -1026,6 +1026,16 @@
   bottom: 16px;
   right: 21px;
 }
+.wq-archives-year .block-cover, .wq-block .block-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: .6;
+  color: white;
+}
 .wq-archives-year.col-sm-6 p.wq-archives-content, .wq-block.col-sm-6 p.wq-archives-content {
   height: 60px;
 }

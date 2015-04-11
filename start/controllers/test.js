@@ -4,6 +4,7 @@ var cheerio = require('cheerio'),
 
 module.exports = function (app) {
     app.get('/tt', function(req, res, next) {
+        /*
         superagent.get('https://cnodejs.org/')
             .end(function(err, sres) {
                 if (err) {
@@ -23,6 +24,19 @@ module.exports = function (app) {
                     info: items
                 });
             });
+
+            */
+        superagent.get('https://api.douban.com/v2/book/user/sobranier/collections')
+            .end(function(err, sres) {
+                if (err) {
+                    return next(err);
+                }
+                var items = JSON.parse(sres.text).collections;
+                console.log(typeof items);
+                res.render('pages/test', {
+                    info: items
+                });
+            })
     });
 
 };

@@ -1,9 +1,7 @@
 define(['jquery'], function ($) {
 
     var Music = {
-        player: $('.J-audio')[0];
-    
-    
+        player: $('.J-audio')[0]
     }
 
     var player = $('.J-audio')[0];
@@ -47,9 +45,45 @@ define(['jquery'], function ($) {
 
     }
 
+    function bookStore() {
+        /*
+        $.getJSON('https://api.douban.com/v2/book/user/sobranier/collections&callback=?', function(data) {
+            console.log(data.collections);      
+        });*/
+        $.ajax({
+            dataType: 'jsonp',
+            url: 'https://api.douban.com/v2/book/user/sobranier/collections',
+            success: function(data) {
+                console.log(data);
+                bookList(data.collections);
+            }
+        })
+    }
+
+    function bookList(myArray) {
+        var bookStatus = {
+                'wish': '想读',
+                'reading': '在读',
+                'read': '读过'
+        };
+
+        var myFrag = document.createDocumentFragment();
+
+        $.each(myArray, function(i, item) {
+            var newLi = document.createElement('li'),
+                node = document.createTextNode(bookStatus[item.status] + item.book.title + "<img src='" + item.book.image + "'/>");
+            newLi.appendChild(node);
+            myFrag.appendChild(newLi);
+        });
+        document.body.appendChild(myFrag);
+    }
+    
+
+
     $(function(){
         bindControll();
         bindAudio(player);
+        bookStore();
     })
 
 });

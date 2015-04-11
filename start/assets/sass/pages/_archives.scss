@@ -19,10 +19,19 @@
             text-indent:0;
         }
     }
+    //悬浮的按钮
     .btn-fix {
         position: absolute;
         bottom:16px;
         right:21px;
+    }
+    //悬浮框
+    .block-cover {
+        position:absolute;top:0;left:0;
+        width:100%;height:100%;
+        background-color:#000;
+        opacity: .6;
+        color:white;
     }
     &.col-sm-6 p.wq-archives-content {
         height:60px;
