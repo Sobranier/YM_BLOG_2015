@@ -30,7 +30,7 @@
         position:absolute;top:0;left:0;
         width:100%;height:100%;
         background-color:#000;
-        opacity: .6;
+        opacity: 0;
         color:white;
     }
     &.col-sm-6 p.wq-archives-content {
@@ -62,7 +62,8 @@
     }
 }
 .wq-archives-year:hover {
-    &:hover {
-        border-color:#31708f;
+    border-color:#31708f;
+    .block-cover {
+        opacity: 0.6;
     }
 }
