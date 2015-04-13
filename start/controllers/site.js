@@ -46,11 +46,10 @@ module.exports = function (app) {
         res.render('pages/contact', {
             title: '给我留言',
             file: {
-                title: '留言我',
+                title: '',
                 content: [
-                    '测试测试测试1o',
-                    '测试测试测试2',
-                    '测试测试测试3',
+                    '驿寄梅花',
+                    '鱼传尺素',
                 ]
             }
         });

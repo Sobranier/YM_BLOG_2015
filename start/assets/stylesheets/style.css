@@ -1967,6 +1967,7 @@
 }
 
 .wq-archives-year, .wq-block {
+  display: block;
   margin-bottom: 10px;
   padding: 4px;
   border: 2px solid #eee;
