@@ -32,12 +32,12 @@ module.exports = function (app) {
         res.render('pages/about', {
             title: '关于严伟庆',
             file: {
-                title: '关于我',
+                //title: '关于我',
                 content: [
-                    '测试测试测试1o',
-                    '测试测试测试2',
-                    '测试测试测试3'
-                ]
+                    '穷且益坚',
+                    '不坠青云之志'
+                ],
+                background: '/images/bg/me.jpg'
             }
         });
     });
