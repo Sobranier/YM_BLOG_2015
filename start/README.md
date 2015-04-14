@@ -69,15 +69,15 @@
 
 2、后台设计
 
-    a、博客
+    a、博客  ✔
 
-    b、图片
+    b、图片  ✔
 
-    c、music
+    c、music  ✔
 
     d、track from wechat
 
-    e、blog event track
+    e、blog event track  ✔
 
     f、先使用handlebars后使用angular (handlebars部署完成，不准备使用angular)  ✔
 
@@ -85,17 +85,17 @@
 
 3、优化
 
-    a、markdown解析
+    a、markdown解析  ✔
 
-    b、评论
+    b、评论  ✔
 
     c、文章关联关系（前后篇等）
 
     d、404 (前后台的404可能不同的展现方式，后台404直接导到dashboard，前台的可能设置404)
 
-    e、登陆状态下前台可以直接跳转到后台
+    e、登陆状态下前台可以直接跳转到后台  ✔
 
-    f、设置ico
+    f、设置ico  ✔
 
-    g、文章是否需要设置三种状态(公开展示，公开但是需要url无显示入口，不公开)(前台智能获取前两种公开的blog)
+    g、文章是否需要设置三种状态(公开展示，公开但是需要url无显示入口，不公开)(前台智能获取前两种公开的blog)  ✔
 

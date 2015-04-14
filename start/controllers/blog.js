@@ -36,7 +36,8 @@ module.exports = function (app) {
                         content: [
                             '既往不恋',
                             '纵情向前',
-                        ]
+                        ],
+                        background: '/images/bg/home.jpg'
                     },
                     posts: blogs
                 });
