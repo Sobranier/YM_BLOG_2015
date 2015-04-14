@@ -86,9 +86,10 @@ module.exports = function (app) {
                         '你好吗',
                         '你妹',
                         '你'
-                    ]
+                    ],
+                    name: req.params.tag
                 },
-                kind: '文章列表'
+                kind: '文章列表:'
             }
         }
         getPaperList(res, params, false);
