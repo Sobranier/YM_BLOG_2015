@@ -34,8 +34,8 @@ module.exports = function (app) {
             file: {
                 //title: '关于我',
                 content: [
-                    '穷且益坚',
-                    '不坠青云之志'
+                    '你从一座叫我的小镇经过',
+                    '刚好屋顶的雪化成雨飘落'
                 ],
                 background: '/images/bg/me.jpg'
             }

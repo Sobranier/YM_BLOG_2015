@@ -318,7 +318,8 @@ module.exports = function (app) {
                         '123',
                         '234',
                         '456'
-                    ]
+                    ],
+                    background: '/images/bg/riding.jpg'
                 }
             });
         }
