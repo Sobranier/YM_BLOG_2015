@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 iowhfhiuhguheugijiewhfuhwuwri
+=======
+jdiwfjoiiewjiewhfuhwuwri
+>>>>>>> server
