@@ -2047,6 +2047,294 @@
   opacity: 0.6;
 }
 
+.bm-bg {
+  position: relative;
+  font-size: 20px;
+  height: 30em;
+  background-image: url("/images/bg/bm-bbg.jpg");
+  background-color: #eee;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.bm-head {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  top: 0;
+  z-index: 9;
+}
+.bm-head .bm-face {
+  position: relative;
+  width: 3.2em;
+  height: 2.6em;
+  margin: 0 auto;
+  background-color: #d4b481;
+  border-radius: 50% 50% 45% 45%;
+  box-shadow: 0 0.25em 0.25em #7c7269, 0.25em 0.25em 0.3em #fbf8d7 inset;
+}
+.bm-head .bm-face .bm-face__part {
+  position: absolute;
+  background-color: black;
+  top: 50%;
+  left: 50%;
+}
+.bm-head .bm-face .bm-left-eye, .bm-head .bm-face .bm-right-eye {
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  margin-top: -0.3em;
+}
+.bm-head .bm-face .bm-left-eye {
+  margin-left: -1em;
+}
+.bm-head .bm-face .bm-right-eye {
+  margin-left: 0.5em;
+}
+.bm-head .bm-face .bm-nose {
+  width: 1.2em;
+  height: 0;
+  border-top: 0.1em solid black;
+  margin-left: -0.6em;
+}
+
+.bm-body {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  top: 2em;
+  z-index: 6;
+}
+.bm-body .bm-body__part {
+  position: absolute;
+  left: 50%;
+  top: 0.8em;
+  width: 5em;
+  height: 12em;
+  background-color: #d4b481;
+  box-shadow: 0 0 0.25em #7c7269 inset;
+  overflow-x: hidden;
+}
+.bm-body .bm-body__part:before {
+  display: block;
+  content: '';
+  width: 2em;
+  height: 4em;
+  border-radius: 100%;
+  background-color: #b8c0c3;
+  border: 1px solid #999;
+  position: absolute;
+  top: 50%;
+  margin-top: -2em;
+}
+.bm-body .bm-finger {
+  position: absolute;
+  bottom: -0.5em;
+  left: 50%;
+  height: 1em;
+  width: 0.4em;
+  background-color: black;
+  border-radius: 100%;
+}
+.bm-body .bm-left-arm {
+  transform: rotate(19deg);
+  -webkit-transform: rotate(19deg);
+  margin-left: -6.7em;
+  border-radius: 100% 100% 100% 100% / 100% 100% 100% 100%;
+  box-shadow: 0.2em 0.25em 0.2em #fbf8d7 inset;
+}
+.bm-body .bm-left-arm .bm-finger-1 {
+  margin-left: -0.2em;
+}
+.bm-body .bm-left-arm .bm-finger-2 {
+  margin-left: 0.2em;
+}
+.bm-body .bm-left-arm:before {
+  left: -1em;
+}
+.bm-body .bm-right-arm {
+  transform: rotate(-19deg);
+  -webkit-transform: rotate(-19deg);
+  margin-left: 1.8em;
+  border-radius: 100% 100% 100% 100% / 100% 100% 100% 100%;
+  box-shadow: -0.2em 0.25em 0.2em #fbf8d7 inset;
+}
+.bm-body .bm-right-arm:before {
+  right: -1em;
+}
+.bm-body .bm-shoulder {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 6em;
+  height: 3.2em;
+  border-radius: 100%;
+  background-color: #d4b481;
+  margin-left: -3em;
+}
+.bm-body .bm-chest {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 1.4em;
+  width: 6em;
+  height: 3.2em;
+  margin-left: -3em;
+  background-color: #d4b481;
+}
+.bm-body .bm-chest:before, .bm-body .bm-chest:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+.bm-body .bm-chest:before {
+  border-top: 3.2em solid transparent;
+  border-right: 1em solid #d4b481;
+  left: -1em;
+}
+.bm-body .bm-chest:after {
+  border-top: 3.2em solid transparent;
+  border-left: 1em solid #d4b481;
+  right: -1em;
+}
+.bm-body .bm-chest .bm-heart {
+  position: absolute;
+  right: 20%;
+  width: 2.8em;
+  height: 2.8em;
+  line-height: 2.6em;
+  border-radius: 100%;
+  border: 1px solid #eee;
+  font-size: 0.2em;
+}
+.bm-body .bm-chest .bm-infobd {
+  width: 5em;
+  height: 3em;
+  background-color: white;
+  margin: 2em auto 0;
+  border-radius: 20% 20% 25% 25% / 39% 39% 39% 39%;
+  text-align: center;
+  line-height: 3em;
+  color: #2e9ec6;
+  font-size: bold;
+}
+.bm-body .bm-tummy {
+  position: absolute;
+  left: 50%;
+  top: 4.6em;
+  width: 8em;
+  height: 4.8em;
+  margin-left: -4em;
+  background-color: #d4b481;
+}
+.bm-body .bm-tummy:before, .bm-body .bm-tummy:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+.bm-body .bm-tummy:before {
+  border-top: 4.8em solid transparent;
+  border-right: 1em solid #d4b481;
+  left: -1em;
+}
+.bm-body .bm-tummy:after {
+  border-top: 4.8em solid transparent;
+  border-left: 1em solid #d4b481;
+  right: -1em;
+}
+.bm-body .bm-hip {
+  position: absolute;
+  left: 50%;
+  top: 6em;
+  width: 10em;
+  height: 9em;
+  margin-left: -5em;
+  background-color: #d4b481;
+  border-radius: 100% 100% 100% 100%/80% 80% 80% 80%;
+  box-shadow: 0 0.2em 0.05em #7c7269;
+}
+
+.bm-leg {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  top: 15.4em;
+  z-index: 4;
+}
+.bm-leg .bm-leg-left, .bm-leg .bm-leg-right {
+  position: absolute;
+  width: 3.6em;
+  height: 5em;
+  top: 0;
+  left: 50%;
+  background-color: #d4b481;
+  overflow: hidden;
+  box-shadow: 0 0.2em 0.05em #7c7269;
+}
+.bm-leg .bm-leg-left:before, .bm-leg .bm-leg-right:before {
+  display: block;
+  content: '';
+  border-radius: 100%;
+  position: absolute;
+  background-color: #b8c0c3;
+  width: 2em;
+  height: 3em;
+  border: 1px solid #999;
+}
+.bm-leg .bm-leg-left .foot, .bm-leg .bm-leg-right .foot {
+  width: 3.6em;
+  height: 2em;
+  position: absolute;
+  left: 0;
+  bottom: -1.4em;
+  background-color: #b8c0c3;
+  border: 1px solid #999;
+}
+.bm-leg .bm-leg-left .foot:before, .bm-leg .bm-leg-right .foot:before {
+  display: block;
+  content: '';
+  border-radius: 10%;
+  position: absolute;
+  left: 50%;
+  margin-left: -0.8em;
+  top: -0.3em;
+  width: 1.6em;
+  height: 0.3em;
+  background-color: #b8c0c3;
+  border: 1px solid #999;
+  border-bottom: 0;
+}
+.bm-leg .bm-leg-left {
+  margin-left: -3.6em;
+  border-radius: 40% 20% 50% 100% / 100% 100% 72% 100%;
+}
+.bm-leg .bm-leg-left:before {
+  top: 0;
+  left: -1.2em;
+}
+.bm-leg .bm-leg-left .foot {
+  transform: rotate(5deg);
+  -webkit-transform: rotate(5deg);
+}
+.bm-leg .bm-leg-right {
+  border-radius: 20% 40% 100% 50% / 100% 100% 100% 72%;
+}
+.bm-leg .bm-leg-right:before {
+  top: 0;
+  right: -1.2em;
+}
+.bm-leg .bm-leg-right .foot {
+  transform: rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+}
+
 * {
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
